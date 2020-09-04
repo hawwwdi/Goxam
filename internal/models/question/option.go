@@ -23,10 +23,10 @@ func (o *TestOpt) String() string {
 }
 
 type ShortAnswerOpt struct {
-	Value []rune
+	Value string
 }
 
-func NewShortAnswerOpt(ans []rune) ShortAnswerOpt {
+func NewShortAnswerOpt(ans string) ShortAnswerOpt {
 	s := new(ShortAnswerOpt)
 	s.Value = ans
 	return *s
