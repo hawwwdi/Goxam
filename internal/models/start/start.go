@@ -1,13 +1,15 @@
-package models
+package start
 
 import (
 	"fmt"
+	"github.com/hawwwdi/Goxam/internal/models/students"
+	"github.com/hawwwdi/Goxam/internal/models/tachers"
 )
 
 
 type User struct {
 	Name, Email, Password string
-	Type                  int
+	Type                  int//1 teacher , 2 student
 }
 
 func start() {
@@ -34,9 +36,9 @@ func signUp() {
 	}else {
 		saveUserToDB(newUser)
 		if newUser.Type==1{
-			fmt.Print(newUser)
+			teachers.Handle(newUser)
 		}else {
-			fmt.Print(newUser)
+			students.Handle(newUser)
 		}
 	}
 }
@@ -46,9 +48,9 @@ func login() {
 	newUser := getUser()
 	if checkedLog(){
 		if newUser.Type==1{
-			fmt.Print(newUser)
+			teachers.Handle(newUser)
 		}else {
-			fmt.Print(newUser)
+			students.Handle(newUser)
 		}
 	}else {
 		fmt.Println("you have not sign up yet ! pleas sign up first . ")
