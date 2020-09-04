@@ -1,5 +1,7 @@
 package question
 
+import "strconv"
+
 type Test struct {
 	Dsc
 	MultipleChoice bool
@@ -14,8 +16,18 @@ func NewTest(dsc Description, mc bool) Test {
 	return *t
 }
 
+func (t *Test) AddOption(opt ...Option) {
+	t.Options = append(t.Options, opt...)
+}
+
 func (t *Test) CheckAnswer(answer ...string) bool {
-	//todo
+	for _, ans := range answer {
+		index, err := strconv.Atoi(ans)
+		handleError(err)
+		if !t.Options[index].Value {
+			return false
+		}
+	}
 	return true
 }
 
