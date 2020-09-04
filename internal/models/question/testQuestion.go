@@ -1,20 +1,20 @@
 package question
 
-type test struct {
+type Test struct {
 	MultipleChoice bool
 }
 
-func (t *test) CheckAnswer(answer ...string) bool {
+func (t *Test) CheckAnswer(answer ...string) bool {
 	//todo
 	return true
 }
 
-func (t *test) Form () string {
+func (t *Test) Form () string {
 	//todo
 	return "this is form"
 }
 
-func (t *test) String() string {
+func (t *Test) String() string {
 	//todo
 	return "this is string"
 }
