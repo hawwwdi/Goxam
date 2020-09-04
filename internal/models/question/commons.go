@@ -23,3 +23,9 @@ func NewDescription(txt []rune, img image.Image) Description {
 	d.Picture = img
 	return *d
 }
+
+func handleError(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
