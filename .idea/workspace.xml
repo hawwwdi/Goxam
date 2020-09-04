@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b30e9dd6-16f4-42c7-8d1f-eca2c9bb3637" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +51,39 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager">
+    <configuration name="go build testMethods.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Goxam" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/internal/models/testMethods.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build testMethods.go" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b30e9dd6-16f4-42c7-8d1f-eca2c9bb3637" name="Default Changelist" comment="" />
+      <created>1599205079782</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599205079782</updated>
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
@@ -66,11 +97,28 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="514" y="234" width="400" height="334" key="#Go_Modules" timestamp="1599162286615">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="514" y="234" width="400" height="334" key="#Go_Modules/72.27.1294.741@72.27.1294.741" timestamp="1599162286615" />
+    <state width="1800" height="266" key="GridCell.Tab.0.bottom" timestamp="1599208944492">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1800" height="266" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1599208944492" />
+    <state width="1800" height="266" key="GridCell.Tab.0.center" timestamp="1599208944491">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1800" height="266" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1599208944491" />
+    <state width="1800" height="266" key="GridCell.Tab.0.left" timestamp="1599208944491">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1800" height="266" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1599208944491" />
+    <state width="1800" height="266" key="GridCell.Tab.0.right" timestamp="1599208944492">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1800" height="266" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1599208944492" />
   </component>
 </project>
