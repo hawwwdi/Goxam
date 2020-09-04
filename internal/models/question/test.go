@@ -9,7 +9,7 @@ func (t *test) CheckAnswer(answer string) bool {
 	return true
 }
 
-func (t *test) ToForm () string {
+func (t *test) Form () string {
 	//todo
 	return "this is form"
 }
