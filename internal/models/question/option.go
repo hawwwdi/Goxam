@@ -1,23 +1,23 @@
 package question
 
-type Option struct {
+type TestOpt struct {
 	Description
 	Value bool
 }
 
-func NewOption(dsc Description, value bool) Option {
-	o := new(Option)
+func NewTestOpt(dsc Description, value bool) TestOpt {
+	o := new(TestOpt)
 	o.Description = dsc
 	o.Value = value
 	return *o
 }
 
-func (o *Option) Form() string {
+func (o *TestOpt) Form() string {
 	//todo
 	return "this is form"
 }
 
-func (o *Option) String() string {
+func (o *TestOpt) String() string {
 	//todo
 	return "this is string"
 }
