@@ -1,10 +1,10 @@
 package question
 
 type test struct {
-
+	MultipleChoice bool
 }
 
-func (t *test) CheckAnswer(answer string) bool {
+func (t *test) CheckAnswer(answer ...string) bool {
 	//todo
 	return true
 }
