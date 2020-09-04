@@ -1,16 +1,13 @@
 package question
 
-import "image"
-
 type Option struct {
 	Description
 	Value bool
 }
 
-func NewOption(txt []rune, img image.Image, value bool) Option {
+func NewOption(dsc Description, value bool) Option {
 	o := new(Option)
-	o.Text = txt
-	o.Picture = img
+	o.Description = dsc
 	o.Value = value
 	return *o
 }
