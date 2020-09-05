@@ -39,6 +39,7 @@ func Start() {
 	}
 	defer db.Close()
 }
+
 //##########################################################################################################
 func getUser() user.User {
 	var Name, Email, Password string
@@ -54,6 +55,7 @@ func getUser() user.User {
 	newUser := user.User{Name: Name, Email: Email, PassWord: []byte(Password), Type: Type}
 	return newUser
 }
+
 //##########################################################################################################
 // signup part done
 func signUp() {
@@ -81,43 +83,51 @@ func saveUserToDB(db *sql.DB, user user.User) {
 		dbHandler.SaveStudent(db, user)
 	}
 }
+
 //#########################################################################################################
 func login() {
 	fmt.Println("logging in ... ")
 	newUser := getUser()
 	if checkSignUp(newUser) {
-		if newUser.Type == 1 {
-			teachers.Handle(newUser)
+		if checkPass(newUser) {
+			if newUser.Type == 1 {
+				teachers.Handle(newUser)
+			} else {
+				students.Handle(newUser)
+			}
 		} else {
-			students.Handle(newUser)
+			fmt.Print("WRONG PASS WORD")
 		}
 	} else {
 		fmt.Println("you have not sign up yet ! pleas sign up first . ")
 		signUp()
 	}
 }
-//#########################################################################################################
-func checkSignUp(user user.User) bool {
-	var ok  bool
-	if user.Type==1{
-		_ ,ok = Teachers[user.Email]
-	}else {
-		_, ok = Students[user.Email]
-	}
-	if !ok{
-		return false
-	}else {
-		return true
-	}
-}
-//##########################################################################################################
-func checkLogging(user user.User) bool {
+
+func checkPass(user user.User) bool {
 	err := bcrypt.CompareHashAndPassword(Students[user.Email].PassWord, user.PassWord)
 	if err != nil {
 		return false
 	}
 	return true
 }
+//#########################################################################################################
+func checkSignUp(user user.User) bool {
+	var ok bool
+	if user.Type == 1 {
+		_, ok = Teachers[user.Email]
+	} else {
+		_, ok = Students[user.Email]
+	}
+	if !ok {
+		return false
+	} else {
+		return true
+	}
+}
+
+//##########################################################################################################
+
 func errHandler(err error) {
 	if err != nil {
 		log.Fatalln(err)
