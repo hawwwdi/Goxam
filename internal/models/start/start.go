@@ -9,13 +9,12 @@ import (
 	"github.com/hawwwdi/Goxam/internal/models/tachers"
 	"github.com/hawwwdi/Goxam/internal/models/user"
 	"golang.org/x/crypto/bcrypt"
-	"log"
 )
 
 var db *sql.DB
 var Teachers = make(map[string]user.User)
 var Students = make(map[string]user.User)
-
+// loading users from data base and starting the app
 func Start() {
 	db = dbHandler.GetDB()
 	dbHandler.LoadUsersFromDb(db, Teachers, Students)
@@ -39,8 +38,8 @@ func Start() {
 	}
 	defer db.Close()
 }
-
 //##########################################################################################################
+// a console version for getting user info
 func getUser() user.User {
 	var Name, Email, Password string
 	var Type int
@@ -55,9 +54,8 @@ func getUser() user.User {
 	newUser := user.User{Name: Name, Email: Email, PassWord: []byte(Password), Type: Type}
 	return newUser
 }
-
 //##########################################################################################################
-// signup part done
+// signup part
 func signUp() {
 	fmt.Println("signing in ... ")
 	newUser := getUser()
@@ -73,6 +71,7 @@ func signUp() {
 		}
 	}
 }
+// function to save new user to data base and our maps of users
 func saveUserToDB(db *sql.DB, user user.User) {
 	user.SetEncryptPassWord(user.PassWord)
 	if user.Type == 1 {
@@ -83,8 +82,8 @@ func saveUserToDB(db *sql.DB, user user.User) {
 		dbHandler.SaveStudent(db, user)
 	}
 }
-
 //#########################################################################################################
+//method for logging in
 func login() {
 	fmt.Println("logging in ... ")
 	newUser := getUser()
@@ -103,7 +102,7 @@ func login() {
 		signUp()
 	}
 }
-
+//this function check inputted password to be correct
 func checkPass(user user.User) bool {
 	err := bcrypt.CompareHashAndPassword(Students[user.Email].PassWord, user.PassWord)
 	if err != nil {
@@ -112,6 +111,7 @@ func checkPass(user user.User) bool {
 	return true
 }
 //#########################################################################################################
+//this method check if the user exists in our data base or not
 func checkSignUp(user user.User) bool {
 	var ok bool
 	if user.Type == 1 {
@@ -125,11 +125,4 @@ func checkSignUp(user user.User) bool {
 		return true
 	}
 }
-
 //##########################################################################################################
-
-func errHandler(err error) {
-	if err != nil {
-		log.Fatalln(err)
-	}
-}

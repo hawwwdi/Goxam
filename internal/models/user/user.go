@@ -10,7 +10,7 @@ type User struct {
 	PassWord    []byte
 	Type        int //1 teacher , 2 student
 }
-
+// function to create encripted password
 func (user *User) SetEncryptPassWord(pass []byte) {
 	bs, err := bcrypt.GenerateFromPassword(pass, bcrypt.MinCost)
 	if err != nil {
@@ -19,10 +19,4 @@ func (user *User) SetEncryptPassWord(pass []byte) {
 	}
 	user.PassWord = bs
 }
-func (user *User) CheckPassword(pass string) bool {
-	err := bcrypt.CompareHashAndPassword(user.PassWord, []byte(pass))
-	if err != nil {
-		return false
-	}
-	return true
-}
+
