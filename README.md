@@ -1,3 +1,3 @@
-![pic](https://github.com/hawwwdi/Goxam/assets/cs.png)
+![pic](https://github.com/hawwwdi/Goxam/blob/master/assets/cs.png)
 # Goxam  
 loading... :)
