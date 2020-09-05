@@ -21,6 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b30e9dd6-16f4-42c7-8d1f-eca2c9bb3637" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/app/app.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/dbHandler/dbHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/dbHandler/dbHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/start/start.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/start/start.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/user/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,11 +63,22 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
-  <component name="RunManager" selected="Database Script.goxam.sql">
-    <configuration name="goxam.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build app.go">
+    <configuration name="goxam.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/internal/db/goxam.sql" />
       <script-mode>FILE</script-mode>
+      <data-source id="c94ae212-81f5-469e-a8f1-a57049af9cd4" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build app.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Goxam" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/cmd/app/app.go" />
+      <package value="github.com/hawwwdi/Goxam" />
+      <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <configuration name="go build testMethods.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -73,9 +89,14 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Database Script.goxam.sql" />
+      <item itemvalue="Go Build.go build testMethods.go" />
+      <item itemvalue="Go Build.go build app.go" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Database Script.goxam.sql" />
+        <item itemvalue="Go Build.go build app.go" />
         <item itemvalue="Go Build.go build testMethods.go" />
       </list>
     </recent_temporary>
@@ -115,33 +136,49 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="219" y="399" width="1543" height="315" key="#SQL_Dialects/72.27.1848.1053@72.27.1848.1053" timestamp="1599235066603" />
-    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599242705476">
+    <state x="591" y="215" width="816" height="850" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599300202897">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1599242705476" />
-    <state x="775" y="311" key="FileChooserDialogImpl" timestamp="1599234232903">
+    <state x="591" y="215" width="816" height="850" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1599300202897" />
+    <state x="775" y="311" key="FileChooserDialogImpl" timestamp="1599297953351">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="775" y="311" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1599234232903" />
-    <state width="1800" height="266" key="GridCell.Tab.0.bottom" timestamp="1599208944492">
+    <state x="775" y="311" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1599297953351" />
+    <state width="1800" height="622" key="GridCell.Tab.0.bottom" timestamp="1599313790106">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1800" height="266" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1599208944492" />
-    <state width="1800" height="266" key="GridCell.Tab.0.center" timestamp="1599208944491">
+    <state width="1800" height="622" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1599313790106" />
+    <state width="1800" height="622" key="GridCell.Tab.0.center" timestamp="1599313790105">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1800" height="266" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1599208944491" />
-    <state width="1800" height="266" key="GridCell.Tab.0.left" timestamp="1599208944491">
+    <state width="1800" height="622" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1599313790105" />
+    <state width="1800" height="622" key="GridCell.Tab.0.left" timestamp="1599313790105">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1800" height="266" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1599208944491" />
-    <state width="1800" height="266" key="GridCell.Tab.0.right" timestamp="1599208944492">
+    <state width="1800" height="622" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1599313790105" />
+    <state width="1800" height="622" key="GridCell.Tab.0.right" timestamp="1599313790106">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="1800" height="266" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1599208944492" />
-    <state width="363" height="542" key="HiddenNamespacesPopup" timestamp="1599242815561">
+    <state width="1800" height="622" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1599313790106" />
+    <state width="363" height="542" key="HiddenNamespacesPopup" timestamp="1599298366997">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state width="363" height="542" key="HiddenNamespacesPopup/72.27.1848.1053@72.27.1848.1053" timestamp="1599242815561" />
+    <state width="363" height="542" key="HiddenNamespacesPopup/72.27.1848.1053@72.27.1848.1053" timestamp="1599298366997" />
+    <state x="470" y="188" width="1052" height="737" key="SettingsEditor" timestamp="1599298751423">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="470" y="188" width="1052" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1599298751423" />
+    <state x="891" y="429" width="199" height="255" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1599298339332">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="891" y="429" width="199" height="255" key="com.intellij.database.actions.DdlActions$CreateObject$1/72.27.1848.1053@72.27.1848.1053" timestamp="1599298339332" />
+    <state x="892" y="438" width="398" height="268" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1599298770266">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="892" y="438" width="398" height="268" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/72.27.1848.1053@72.27.1848.1053" timestamp="1599298770266" />
+    <state x="383" y="388" width="1482" height="566" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1599308568656">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="383" y="388" width="1482" height="566" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1599308568656" />
   </component>
 </project>
