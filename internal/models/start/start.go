@@ -8,6 +8,7 @@ import (
 	"github.com/hawwwdi/Goxam/internal/models/students"
 	"github.com/hawwwdi/Goxam/internal/models/tachers"
 	"github.com/hawwwdi/Goxam/internal/models/user"
+	"golang.org/x/crypto/bcrypt"
 	"log"
 )
 
@@ -50,8 +51,7 @@ func getUser() user.User {
 	fmt.Scan(&Password)
 	fmt.Print("Type of user ( 1 stands for teacher and 2 stands for student )  : ")
 	fmt.Scan(&Type)
-	newUser := user.User{Name: Name, Email: Email, PassWord: nil, Type: Type}
-	newUser.SetEncryptPassWord(Password)
+	newUser := user.User{Name: Name, Email: Email, PassWord: []byte(Password), Type: Type}
 	return newUser
 }
 //##########################################################################################################
@@ -71,11 +71,13 @@ func signUp() {
 		}
 	}
 }
-
 func saveUserToDB(db *sql.DB, user user.User) {
+	user.SetEncryptPassWord(user.PassWord)
 	if user.Type == 1 {
+		Teachers[user.Email] = user
 		dbHandler.SaveTeacher(db, user)
 	} else {
+		Students[user.Email] = user
 		dbHandler.SaveStudent(db, user)
 	}
 }
@@ -109,7 +111,13 @@ func checkSignUp(user user.User) bool {
 	}
 }
 //##########################################################################################################
-
+func checkLogging(user user.User) bool {
+	err := bcrypt.CompareHashAndPassword(Students[user.Email].PassWord, user.PassWord)
+	if err != nil {
+		return false
+	}
+	return true
+}
 func errHandler(err error) {
 	if err != nil {
 		log.Fatalln(err)

@@ -11,8 +11,8 @@ type User struct {
 	Type        int //1 teacher , 2 student
 }
 
-func (user *User) SetEncryptPassWord(pass string) {
-	bs, err := bcrypt.GenerateFromPassword([]byte(pass), bcrypt.MinCost)
+func (user *User) SetEncryptPassWord(pass []byte) {
+	bs, err := bcrypt.GenerateFromPassword(pass, bcrypt.MinCost)
 	if err != nil {
 		log.Fatalln(err)
 		return
