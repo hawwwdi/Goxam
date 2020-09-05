@@ -13,11 +13,11 @@ type Question interface {
 }
 
 type Description struct {
-	Text    []rune
+	Text    string
 	Picture image.Image
 }
 
-func NewDescription(txt []rune, img image.Image) Description {
+func NewDescription(txt string, img image.Image) Description {
 	d := new(Description)
 	d.Text = txt
 	d.Picture = img

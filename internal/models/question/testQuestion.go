@@ -5,18 +5,18 @@ import "strconv"
 type Test struct {
 	Dsc
 	MultipleChoice bool
-	Options []Option
+	Options []TestOpt
 }
 
 func NewTest(dsc Description, mc bool) Test {
 	t := new(Test)
 	t.Description = dsc
 	t.MultipleChoice = mc
-	t.Options = make([]Option, 0, 2)
+	t.Options = make([]TestOpt, 0, 2)
 	return *t
 }
 
-func (t *Test) AddOption(opt ...Option) {
+func (t *Test) AddOption(opt ...TestOpt) {
 	t.Options = append(t.Options, opt...)
 }
 
