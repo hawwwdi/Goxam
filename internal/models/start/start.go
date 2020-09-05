@@ -1,63 +1,73 @@
 package start
 
 import (
+	"database/sql"
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/hawwwdi/Goxam/internal/models/dbHandler"
 	"github.com/hawwwdi/Goxam/internal/models/students"
 	"github.com/hawwwdi/Goxam/internal/models/tachers"
+	"github.com/hawwwdi/Goxam/internal/models/user"
+	"log"
 )
 
+var db *sql.DB
+var Teachers = make(map[string]user.User)
+var Students = make(map[string]user.User)
 
-type User struct {
-	Name, Email, Password string
-	Type                  int//1 teacher , 2 student
-}
-
-func start() {
+func Start() {
+	db = dbHandler.GetDB()
+	dbHandler.LoadUsersFromDb(db, Teachers, Students)
+	fmt.Println(Teachers)
+	fmt.Println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+	fmt.Println(Students)
 	for true {
 		fmt.Println("1 ) sign up \n2 ) login ")
 		var chosen int
 		fmt.Scan(&chosen)
 		switch chosen {
+		//TODO
+		// adding go before each func cause capabality to handle lots of reauests
 		case 1:
-			go signUp()
+			signUp()
 		case 2:
-			go login()
+			login()
 		default:
 			print("unsupported input !")
 		}
 	}
+	defer db.Close()
 }
 func signUp() {
 	fmt.Println("signing in ... ")
 	newUser := getUser()
-	if checkedLog(){
-		fmt.Print("You have already logged in ! ")
+	if checkSignUp(newUser) {
+		fmt.Print("You have already signed in ! ")
 		login()
-	}else {
-		saveUserToDB(newUser)
-		if newUser.Type==1{
+	} else {
+		saveUserToDB(db, newUser)
+		if newUser.Type == 1 {
 			teachers.Handle(newUser)
-		}else {
+		} else {
 			students.Handle(newUser)
 		}
 	}
 }
 func login() {
-
-	fmt.Println("signing in ... ")
+	fmt.Println("logging in ... ")
 	newUser := getUser()
-	if checkedLog(){
-		if newUser.Type==1{
+	if checkSignUp(newUser) {
+		if newUser.Type == 1 {
 			teachers.Handle(newUser)
-		}else {
+		} else {
 			students.Handle(newUser)
 		}
-	}else {
+	} else {
 		fmt.Println("you have not sign up yet ! pleas sign up first . ")
 		signUp()
 	}
 }
-func getUser() User{
+func getUser() user.User {
 	var Name, Email, Password string
 	var Type int
 	fmt.Print("NAME : ")
@@ -68,12 +78,34 @@ func getUser() User{
 	fmt.Scan(&Password)
 	fmt.Print("Type of user ( 1 stands for teacher and 2 stands for student )  : ")
 	fmt.Scan(&Type)
-	return User{Name: Name, Email: Email, Password: Password, Type: Type}
+	newUser := user.User{Name: Name, Email: Email, PassWord: nil, Type: Type}
+	newUser.SetEncryptPassWord(Password)
+	return newUser
 }
-func saveUserToDB(user User)  {
-	//save user to data base
+
+func saveUserToDB(db *sql.DB, user user.User) {
+	if user.Type == 1 {
+		dbHandler.SaveTeacher(db, user)
+	} else {
+		dbHandler.SaveStudent(db, user)
+	}
 }
-func checkedLog() bool  {
-	//search in database and return true if user was logged in before
-	return true
+
+func checkSignUp(user user.User) bool {
+	var ok  bool
+	if user.Type==1{
+		_ ,ok = Teachers[user.Email]
+	}else {
+		_, ok = Students[user.Email]
+	}
+	if !ok{
+		return false
+	}else {
+		return true
+	}
+}
+func errHandler(err error) {
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
