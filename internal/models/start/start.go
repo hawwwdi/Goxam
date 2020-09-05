@@ -38,35 +38,7 @@ func Start() {
 	}
 	defer db.Close()
 }
-func signUp() {
-	fmt.Println("signing in ... ")
-	newUser := getUser()
-	if checkSignUp(newUser) {
-		fmt.Print("You have already signed in ! ")
-		login()
-	} else {
-		saveUserToDB(db, newUser)
-		if newUser.Type == 1 {
-			teachers.Handle(newUser)
-		} else {
-			students.Handle(newUser)
-		}
-	}
-}
-func login() {
-	fmt.Println("logging in ... ")
-	newUser := getUser()
-	if checkSignUp(newUser) {
-		if newUser.Type == 1 {
-			teachers.Handle(newUser)
-		} else {
-			students.Handle(newUser)
-		}
-	} else {
-		fmt.Println("you have not sign up yet ! pleas sign up first . ")
-		signUp()
-	}
-}
+//##########################################################################################################
 func getUser() user.User {
 	var Name, Email, Password string
 	var Type int
@@ -82,6 +54,23 @@ func getUser() user.User {
 	newUser.SetEncryptPassWord(Password)
 	return newUser
 }
+//##########################################################################################################
+// signup part done
+func signUp() {
+	fmt.Println("signing in ... ")
+	newUser := getUser()
+	if checkSignUp(newUser) {
+		fmt.Print("You have already signed in ! ")
+		login()
+	} else {
+		saveUserToDB(db, newUser)
+		if newUser.Type == 1 {
+			teachers.Handle(newUser)
+		} else {
+			students.Handle(newUser)
+		}
+	}
+}
 
 func saveUserToDB(db *sql.DB, user user.User) {
 	if user.Type == 1 {
@@ -90,7 +79,22 @@ func saveUserToDB(db *sql.DB, user user.User) {
 		dbHandler.SaveStudent(db, user)
 	}
 }
-
+//#########################################################################################################
+func login() {
+	fmt.Println("logging in ... ")
+	newUser := getUser()
+	if checkSignUp(newUser) {
+		if newUser.Type == 1 {
+			teachers.Handle(newUser)
+		} else {
+			students.Handle(newUser)
+		}
+	} else {
+		fmt.Println("you have not sign up yet ! pleas sign up first . ")
+		signUp()
+	}
+}
+//#########################################################################################################
 func checkSignUp(user user.User) bool {
 	var ok  bool
 	if user.Type==1{
@@ -104,6 +108,8 @@ func checkSignUp(user user.User) bool {
 		return true
 	}
 }
+//##########################################################################################################
+
 func errHandler(err error) {
 	if err != nil {
 		log.Fatalln(err)
