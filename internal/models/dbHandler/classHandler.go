@@ -19,9 +19,21 @@ func SaveClass(db *sql.DB, user user.User, id string) {
 }
 //get each teacher classes from db
 func GetTeacherClasses(db *sql.DB, user user.User) map[int]string {
-	var classesId = make(map[int]string)
 	rows, err2 := db.Query("SELECT class_id FROM Goxam.classes WHERE teacher_email= ?", user.Email)
 	errHandler(err2)
+	return getClasses(rows)
+}
+////////////////////////////////////////////////////////////////////////// END OF PART /
+//////////////////////////////////////////////////////////////////////// STUDENTS PART :
+func GetStudentsClasses(db *sql.DB, user user.User) map[int]string {
+	rows, err2 := db.Query("SELECT class_id FROM Goxam.class_participation WHERE student_email= ?", user.Email)
+	errHandler(err2)
+	fmt.Println("reading students classes from db")
+	return getClasses(rows)
+}
+////////////////////////////////////////////////////////////////////////// END OF PART /
+func getClasses(rows *sql.Rows) map[int]string {
+	var classesId = make(map[int]string)
 	var classId string
 	var counter = 0
 	for rows.Next() {
@@ -32,4 +44,3 @@ func GetTeacherClasses(db *sql.DB, user user.User) map[int]string {
 	}
 	return classesId
 }
-////////////////////////////////////////////////////////////////////////// END OF PART /

@@ -67,7 +67,7 @@ func signUp(db *sql.DB) {
 		if newUser.Type == 1 {
 			teachers.Handle(newUser,db)
 		} else {
-			students.Handle(newUser)
+			students.Handle(newUser,db)
 		}
 	}
 }
@@ -92,7 +92,7 @@ func login(db *sql.DB) {
 			if newUser.Type == 1 {
 				teachers.Handle(newUser,db)
 			} else {
-				students.Handle(newUser)
+				students.Handle(newUser,db)
 			}
 		} else {
 			fmt.Println("WRONG PASS WORD")

@@ -9,7 +9,7 @@ import (
 )
 
 func Handle(user user.User, db *sql.DB) {
-	fmt.Print("HELLO Mr." + user.UserName + " welcome to your portal .")
+	fmt.Println("HELLO Mr." + user.UserName + " welcome to your portal .")
 	fmt.Println("1 ) login to class \n2 ) create a new class")
 	var chosen int
 	fmt.Scan(&chosen)
