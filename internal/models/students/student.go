@@ -8,7 +8,7 @@ import (
 	"github.com/hawwwdi/Goxam/internal/models/user"
 )
 
-func Handle(user user.User,db *sql.DB) {
+func Handle(user user.User, db *sql.DB) {
 	fmt.Println("Hello student " + user.UserName + " to your portal . ")
 	fmt.Println("1 ) see test results  \n2 ) login to class \n3 ) sign up to a class ")
 	var chosen int
@@ -17,25 +17,31 @@ func Handle(user user.User,db *sql.DB) {
 	case 1:
 		seeTestResult(user)
 	case 2:
-		loginToClass(user,db)
+		loginToClass(user, db)
 	case 3:
-		signUpToClass(user,db)
+		signUpToClass(user, db)
 	default:
 		fmt.Println("unsupported input !")
-		Handle(user,db)
+		Handle(user, db)
 	}
 }
-func signUpToClass(user user.User,db *sql.DB) {
-	//get name of teacher
-	//get name or id of class
-	//save this user to list of requests of the teacher
-	Handle(user,db)
+func signUpToClass(user user.User, db *sql.DB) {
+	var classId string
+	fmt.Scan(&classId)
+	massage := dbHandler.CheckClass(db,user,classId)
+	if massage=="ok"{
+		//dbHandler.SendRequest(user,classId)
+		fmt.Println("ok")
+	} else {
+		fmt.Println(massage)
+	}
+	Handle(user, db)
 }
-func seeTestResult(user  user.User) {
+func seeTestResult(user user.User) {
 	//show the test that student has participated in
 	//after choosing one we will sho the result of that
 }
-func loginToClass(user  user.User,db *sql.DB) {
+func loginToClass(user user.User, db *sql.DB) {
 	classesId := dbHandler.GetStudentsClasses(db, user)
 	for _, id := range classesId {
 		fmt.Println(" = " + id)

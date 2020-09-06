@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/hawwwdi/Goxam/internal/models/user"
 )
+
 //////////////////////////////////////////////////////////////////////// TEACHERS PART :
 //save new classes to db
 func SaveClass(db *sql.DB, user user.User, id string) {
@@ -17,20 +18,49 @@ func SaveClass(db *sql.DB, user user.User, id string) {
 	errHandler(err)
 	fmt.Println("INSERTED RECORD TO Classes", ro)
 }
+
 //get each teacher classes from db
 func GetTeacherClasses(db *sql.DB, user user.User) map[int]string {
 	rows, err2 := db.Query("SELECT class_id FROM Goxam.classes WHERE teacher_email= ?", user.Email)
 	errHandler(err2)
 	return getClasses(rows)
 }
+
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 //////////////////////////////////////////////////////////////////////// STUDENTS PART :
 func GetStudentsClasses(db *sql.DB, user user.User) map[int]string {
 	rows, err2 := db.Query("SELECT class_id FROM Goxam.class_participation WHERE student_email= ?", user.Email)
 	errHandler(err2)
-	fmt.Println("reading students classes from db")
 	return getClasses(rows)
 }
+
+//check if the wanted class exists and check if student is already in (using checkParticipated)
+func CheckClass(db *sql.DB, user user.User, id string) string {
+	rows, err2 := db.Query("SELECT EXISTS(SELECT class_id FROM Goxam.classes WHERE class_id= ?)", id)
+	errHandler(err2)
+	var existence string
+	for rows.Next() {
+		err := rows.Scan(&existence)
+		errHandler(err)
+	}
+	if existence=="0" {
+		return "could not find the class ! "
+	} else if checkParticipated(user, id, db) {
+		return "your already in class ! "
+	} else {
+		return "ok"
+	}
+}
+func checkParticipated(user user.User, id string, db *sql.DB) bool {
+	classes := GetStudentsClasses(db, user)
+	for _, value := range classes {
+		if value == id {
+			return true
+		}
+	}
+	return false
+}
+
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 func getClasses(rows *sql.Rows) map[int]string {
 	var classesId = make(map[int]string)
