@@ -56,7 +56,7 @@ func getUser() user.User {
 }
 //##########################################################################################################
 // signup part
-func signUp(*sql.DB) {
+func signUp(db *sql.DB) {
 	fmt.Println("signing in ... ")
 	newUser := getUser()
 	if checkSignUp(newUser) {
@@ -65,7 +65,7 @@ func signUp(*sql.DB) {
 	} else {
 		saveUserToDB(db, newUser)
 		if newUser.Type == 1 {
-			teachers.Handle(newUser)
+			teachers.Handle(newUser,db)
 		} else {
 			students.Handle(newUser)
 		}
@@ -90,12 +90,12 @@ func login(db *sql.DB) {
 	if checkSignUp(newUser) {
 		if checkPass(newUser) {
 			if newUser.Type == 1 {
-				teachers.Handle(newUser)
+				teachers.Handle(newUser,db)
 			} else {
 				students.Handle(newUser)
 			}
 		} else {
-			fmt.Print("WRONG PASS WORD")
+			fmt.Println("WRONG PASS WORD")
 		}
 	} else {
 		fmt.Println("you have not sign up yet ! pleas sign up first . ")
@@ -104,7 +104,12 @@ func login(db *sql.DB) {
 }
 //this function check inputted password to be correct
 func checkPass(user user.User) bool {
-	err := bcrypt.CompareHashAndPassword(Students[user.Email].PassWord, user.PassWord)
+	var err error
+	if user.Type==1 {
+		err = bcrypt.CompareHashAndPassword(Teachers[user.Email].PassWord, user.PassWord)
+	}else {
+		err = bcrypt.CompareHashAndPassword(Students[user.Email].PassWord, user.PassWord)
+	}
 	if err != nil {
 		return false
 	}
