@@ -20,7 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b30e9dd6-16f4-42c7-8d1f-eca2c9bb3637" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmd/app/app.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Goxam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Goxam.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/exam/commons.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/exam/commons.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go Application" />
+        <option value="tsconfig.json" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -44,13 +51,28 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultGoTemplateProperty" value="Go Application" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="goxam.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/internal/db/goxam.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Database Script.goxam.sql" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -66,11 +88,52 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="514" y="234" width="400" height="334" key="#Go_Modules" timestamp="1599162286615">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="514" y="234" width="400" height="334" key="#Go_Modules/72.27.1294.741@72.27.1294.741" timestamp="1599162286615" />
+    <state x="72" y="245" width="1284" height="311" key="#SQL_Dialects" timestamp="1599171030242">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="72" y="245" width="1284" height="311" key="#SQL_Dialects/72.27.1294.741@72.27.1294.741" timestamp="1599171030242" />
+    <state x="252" y="84" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599243624056">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="252" y="84" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1294.741@72.27.1294.741" timestamp="1599243624056" />
+    <state width="854" height="165" key="GridCell.Tab.0.bottom" timestamp="1599169563767">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state width="854" height="165" key="GridCell.Tab.0.bottom/72.27.1294.741@72.27.1294.741" timestamp="1599169563767" />
+    <state width="854" height="165" key="GridCell.Tab.0.center" timestamp="1599169563766">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state width="854" height="165" key="GridCell.Tab.0.center/72.27.1294.741@72.27.1294.741" timestamp="1599169563766" />
+    <state width="854" height="165" key="GridCell.Tab.0.left" timestamp="1599169563764">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state width="854" height="165" key="GridCell.Tab.0.left/72.27.1294.741@72.27.1294.741" timestamp="1599169563764" />
+    <state width="854" height="165" key="GridCell.Tab.0.right" timestamp="1599169563766">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state width="854" height="165" key="GridCell.Tab.0.right/72.27.1294.741@72.27.1294.741" timestamp="1599169563766" />
+    <state width="247" height="540" key="HiddenNamespacesPopup" timestamp="1599169169981">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state width="247" height="540" key="HiddenNamespacesPopup/72.27.1294.741@72.27.1294.741" timestamp="1599169169981" />
+    <state x="558" y="261" width="332" height="249" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1599234489760">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="558" y="261" width="332" height="249" key="com.intellij.database.actions.DdlActions$CreateObject$1/72.27.1294.741@72.27.1294.741" timestamp="1599234489760" />
+    <state x="477" y="90" width="473" height="622" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599162898837">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="477" y="90" width="473" height="622" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1294.741@72.27.1294.741" timestamp="1599162898837" />
+    <state x="382" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1599209409687">
+      <screen x="72" y="27" width="1294" height="741" />
+    </state>
+    <state x="382" y="89" width="672" height="678" key="search.everywhere.popup/72.27.1294.741@72.27.1294.741" timestamp="1599209409687" />
   </component>
 </project>
