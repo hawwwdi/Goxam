@@ -31,11 +31,11 @@ func SaveStudent(db *sql.DB, user user.User) {
 
 func saveUser(stmt *sql.Stmt, user user.User) {
 	defer stmt.Close()
-	r, err := stmt.Exec(user.Email, user.Name, string(user.PassWord))
+	r, err := stmt.Exec(user.Email, user.UserName, string(user.PassWord))
 	errHandler(err)
 	ro, err := r.RowsAffected()
 	errHandler(err)
-	fmt.Println("INSERTED RECORD", ro)
+	fmt.Println("INSERTED RECORD to students or teachers", ro)
 }
 //################################################################################################# END PART /
 
@@ -53,7 +53,7 @@ func putUsers(rows *sql.Rows, users map[string]user.User, typee int) {
 	for rows.Next() {
 		err := rows.Scan(&e, &n, &p)
 		errHandler(err)
-		newUser := user.User{Email: e, Name: n, PassWord: []byte(p), Type: typee}
+		newUser := user.User{Email: e, UserName: n, PassWord: []byte(p), Type: typee}
 		users[newUser.Email] = newUser
 	}
 }

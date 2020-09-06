@@ -1,13 +1,15 @@
 package teachers
 
 import (
+	"database/sql"
 	"fmt"
 	"github.com/hawwwdi/Goxam/internal/models/class"
+	"github.com/hawwwdi/Goxam/internal/models/dbHandler"
 	"github.com/hawwwdi/Goxam/internal/models/user"
 )
 
-func Handle(user user.User) {
-	fmt.Print("HELLO Mr."+user.Name+" welcome to your portal .")
+func Handle(user user.User,db *sql.DB) {
+	fmt.Print("HELLO Mr."+user.UserName +" welcome to your portal .")
 	fmt.Println("1 ) see test results  \n2 ) login to class \n3 ) create a new class \n4 ) see students requests ")
 	var chosen int
 	fmt.Scan(&chosen)
@@ -17,16 +19,18 @@ func Handle(user user.User) {
 	case 2:
 		loginToClass(user)
 	case 3:
-		createClass(user)
+		createClass(user,db)
 	case 4:
 		checkRequests(user)
 	default:
 		fmt.Println("unsupported input !")
-		Handle(user)
+		Handle(user,db)
 	}
 }
-func createClass(user user.User) {
+func createClass(user user.User, db *sql.DB) {
 	//going to class template
+	var id string
+	dbHandler.SaveClass(db,user,id)
 	var classId string
 	class.Handle(classId )
 }

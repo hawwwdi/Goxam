@@ -6,9 +6,9 @@ import (
 )
 
 type User struct {
-	Name, Email string
-	PassWord    []byte
-	Type        int //1 teacher , 2 student
+	UserName, Email string
+	PassWord        []byte
+	Type            int //1 teacher , 2 student
 }
 // function to create encripted password
 func (user *User) SetEncryptPassWord(pass []byte) {

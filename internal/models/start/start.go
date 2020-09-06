@@ -29,9 +29,9 @@ func Start() {
 		//TODO
 		// adding go before each func cause capabality to handle lots of reauests
 		case 1:
-			signUp()
+			signUp(db)
 		case 2:
-			login()
+			login(db)
 		default:
 			print("unsupported input !")
 		}
@@ -51,17 +51,17 @@ func getUser() user.User {
 	fmt.Scan(&Password)
 	fmt.Print("Type of user ( 1 stands for teacher and 2 stands for student )  : ")
 	fmt.Scan(&Type)
-	newUser := user.User{Name: Name, Email: Email, PassWord: []byte(Password), Type: Type}
+	newUser := user.User{UserName: Name, Email: Email, PassWord: []byte(Password), Type: Type}
 	return newUser
 }
 //##########################################################################################################
 // signup part
-func signUp() {
+func signUp(*sql.DB) {
 	fmt.Println("signing in ... ")
 	newUser := getUser()
 	if checkSignUp(newUser) {
 		fmt.Print("You have already signed in ! ")
-		login()
+		login(nil)
 	} else {
 		saveUserToDB(db, newUser)
 		if newUser.Type == 1 {
@@ -84,7 +84,7 @@ func saveUserToDB(db *sql.DB, user user.User) {
 }
 //#########################################################################################################
 //method for logging in
-func login() {
+func login(db *sql.DB) {
 	fmt.Println("logging in ... ")
 	newUser := getUser()
 	if checkSignUp(newUser) {
@@ -99,7 +99,7 @@ func login() {
 		}
 	} else {
 		fmt.Println("you have not sign up yet ! pleas sign up first . ")
-		signUp()
+		signUp(nil)
 	}
 }
 //this function check inputted password to be correct

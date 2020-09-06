@@ -7,7 +7,7 @@ import (
 )
 
 func Handle(user user.User) {
-	fmt.Println("Hello student " + user.Name + " to your portal . ")
+	fmt.Println("Hello student " + user.UserName + " to your portal . ")
 	fmt.Println("1 ) see test results  \n2 ) login to class \n3 ) sign up to a class ")
 	var chosen int
 	fmt.Scan(&chosen)
