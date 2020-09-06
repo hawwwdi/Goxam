@@ -30,14 +30,14 @@ func signUpToClass(user user.User, db *sql.DB) {
 	fmt.Scan(&classId)
 	massage := dbHandler.CheckClass(db,user,classId)
 	if massage=="ok"{
-		//dbHandler.SendRequest(user,classId)
-		fmt.Println("ok")
+		dbHandler.SendRequest(db,user,classId)
 	} else {
 		fmt.Println(massage)
 	}
 	Handle(user, db)
 }
 func seeTestResult(user user.User) {
+	//TODO
 	//show the test that student has participated in
 	//after choosing one we will sho the result of that
 }

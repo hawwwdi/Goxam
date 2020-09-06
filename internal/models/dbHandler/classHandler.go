@@ -60,7 +60,9 @@ func checkParticipated(user user.User, id string, db *sql.DB) bool {
 	}
 	return false
 }
-
+//TODO
+func SendRequest(*sql.DB, user.User, string) {
+}
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 func getClasses(rows *sql.Rows) map[int]string {
 	var classesId = make(map[int]string)
