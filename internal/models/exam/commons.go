@@ -2,7 +2,6 @@ package exam
 
 import (
 	"github.com/hawwwdi/Goxam/internal/models/question"
-	"github.com/rs/xid"
 	"time"
 )
 
@@ -13,11 +12,12 @@ type Exam struct {
 	noq  int // noq is alias for Number of question
 }
 
-func NewExam(dsc question.Description, time time.Duration) Exam {
+// id in format $ClassId_examIndex
+func NewExam(dsc question.Description, time time.Duration, id string) Exam {
 	e := new(Exam)
 	e.Description = dsc
 	e.time = time
-	e.id = xid.New().String()
+	e.id = id
 	return *e
 }
 
@@ -29,10 +29,20 @@ func (e *Exam) AddQuestion(question question.Question) {
 func (e *Exam) RemQuestion(index int) error {
 	//todo remove question from database
 	// if question found
+	// rem question
 	// e.noq--
+	// endif
 	return nil
 }
 
 func (e *Exam) SetTime(duration time.Duration) {
 	e.time = duration
+}
+
+func (e *Exam) Id () string {
+	return e.id
+}
+
+func (e *Exam) String() string {
+	return "this is string"
 }
