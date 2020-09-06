@@ -8,8 +8,9 @@ import (
 
 type Exam struct {
 	question.Description
-	id string
+	id   string
 	time time.Duration
+	noq  int // noq is alias for Number of question
 }
 
 func NewExam(dsc question.Description, time time.Duration) Exam {
@@ -22,13 +23,16 @@ func NewExam(dsc question.Description, time time.Duration) Exam {
 
 func (e *Exam) AddQuestion(question question.Question) {
 	//todo save question with exam id in database
+	e.noq++
 }
 
-func (e *Exam) RemQuestion(index int) {
+func (e *Exam) RemQuestion(index int) error {
 	//todo remove question from database
+	// if question found
+	// e.noq--
+	return nil
 }
 
-func (e *Exam) SetTime(duration time.Duration){
+func (e *Exam) SetTime(duration time.Duration) {
 	e.time = duration
 }
-
