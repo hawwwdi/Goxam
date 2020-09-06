@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"github.com/hawwwdi/Goxam/internal/models/user"
 )
-
+//////////////////////////////////////////////////////////////////////// TEACHERS PART :
+//save new classes to db
 func SaveClass(db *sql.DB, user user.User, id string) {
 	stmt, err := db.Prepare(`INSERT INTO classes VALUES (?,?);`)
 	errHandler(err)
@@ -16,7 +17,7 @@ func SaveClass(db *sql.DB, user user.User, id string) {
 	errHandler(err)
 	fmt.Println("INSERTED RECORD TO Classes", ro)
 }
-
+//get each teacher classes from db
 func GetTeacherClasses(db *sql.DB, user user.User) map[int]string {
 	var classesId = make(map[int]string)
 	rows, err2 := db.Query("SELECT class_id FROM Goxam.classes WHERE teacher_email= ?", user.Email)
@@ -31,3 +32,4 @@ func GetTeacherClasses(db *sql.DB, user user.User) map[int]string {
 	}
 	return classesId
 }
+////////////////////////////////////////////////////////////////////////// END OF PART /
