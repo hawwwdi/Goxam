@@ -1,8 +1,8 @@
 package user
 
 import (
+	"fmt"
 	"golang.org/x/crypto/bcrypt"
-	"log"
 )
 
 type User struct {
@@ -14,7 +14,7 @@ type User struct {
 func (user *User) SetEncryptPassWord(pass []byte) {
 	bs, err := bcrypt.GenerateFromPassword(pass, bcrypt.MinCost)
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 		return
 	}
 	user.PassWord = bs

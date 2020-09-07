@@ -5,7 +5,6 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/hawwwdi/Goxam/internal/models/user"
-	"log"
 )
 
 var db *sql.DB
@@ -71,6 +70,6 @@ func putUsers(rows *sql.Rows, users map[string]user.User, typee int) {
 //################################################################################################## END PART /
 func errHandler(err error) {
 	if err != nil {
-		log.Fatalln(err)
+		fmt.Println(err)
 	}
 }
