@@ -25,18 +25,29 @@ func GetTeacherClasses(db *sql.DB, user user.User) map[int]string {
 	errHandler(err2)
 	return getClasses(rows)
 }
+
 //get a class and return list of requests to join to class
-func GetRequests(db *sql.DB,id string) map[string]string {
+func GetRequests(db *sql.DB, id string) map[string]string {
 	var reqs = make(map[string]string)
 	rows, err2 := db.Query("SELECT student_email FROM Goxam.requests WHERE class_id= ?", id)
 	errHandler(err2)
 	for rows.Next() {
 		var std string
 		err := rows.Scan(&std)
-		reqs[id] = std
+		reqs[std] = id
 		errHandler(err)
 	}
 	return reqs
+}
+func AddStudent(id, email string, db *sql.DB) {
+	stmt, err := db.Prepare(`INSERT INTO class_participation VALUES (?,?);`)
+	errHandler(err)
+	defer stmt.Close()
+	r, err := stmt.Exec(id, email)
+	errHandler(err)
+	ro, err := r.RowsAffected()
+	errHandler(err)
+	fmt.Println("INSERTED RECORD to students", ro)
 }
 
 ////////////////////////////////////////////////////////////////////////// END OF PART /
