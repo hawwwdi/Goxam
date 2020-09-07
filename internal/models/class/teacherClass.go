@@ -6,7 +6,6 @@ import (
 )
 
 func (class TeacherClass) Handle() {
-	fmt.Println("fuckkkkkk")
 	//createExam(class)
 	//seeResults(class)
 	seeRequests(class)
@@ -27,9 +26,10 @@ func seeRequests(class TeacherClass) {
 		fmt.Print("REQUEST FROM :  " + std + "  FOR CLASS : " + cl)
 		fmt.Println()
 	}
-	//TODO check class Id to be valid
-	//TODO choosing request to be accepted
+	//TODO choosing multiple request to be accepted
 	var classID string
 	fmt.Println("ENTER CLASS ID : ")
 	fmt.Scan(&classID)
+	//TODO check class Id to be valid
+
 }
