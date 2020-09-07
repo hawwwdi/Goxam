@@ -1,20 +1,12 @@
 package class
 
-import (
-	"database/sql"
-	"github.com/hawwwdi/Goxam/internal/models/user"
-)
-
-func Handle(classId string,user user.User,db *sql.DB)  {
-
+func (class TeacherClass) Handle() {
+	createExam(class)
+	seeResults(class)
 }
 
-func createTest()  {
-
+func createExam(class TeacherClass) {
 }
-func takeTest()  {
 
-}
-func seeResults()  {
-
+func seeResults(class TeacherClass) {
 }

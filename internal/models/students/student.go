@@ -28,9 +28,9 @@ func Handle(user user.User, db *sql.DB) {
 func signUpToClass(user user.User, db *sql.DB) {
 	var classId string
 	fmt.Scan(&classId)
-	massage := dbHandler.CheckClass(db,user,classId)
-	if massage=="ok"{
-		dbHandler.SendRequest(db,user,classId)
+	massage := dbHandler.CheckClass(db, user, classId)
+	if massage == "ok" {
+		dbHandler.SendRequest(db, user, classId)
 	} else {
 		fmt.Println(massage)
 	}
@@ -49,5 +49,6 @@ func loginToClass(user user.User, db *sql.DB) {
 	var id string
 	fmt.Println("ENTER NAME OF THE CLASS : ")
 	fmt.Scan(&id)
-	class.Handle(id)
+	//TODO check if id is valid
+	class.StudentClass{Id: id, User: user, Db: db}.Handle()
 }

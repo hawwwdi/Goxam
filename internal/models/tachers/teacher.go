@@ -29,8 +29,7 @@ func createClass(user user.User, db *sql.DB) {
 	fmt.Scan(&id)
 	id = user.UserName + "_" + id
 	dbHandler.SaveClass(db, user, id)
-	//TODO going to class
-	class.Handle(id)
+	class.TeacherClass{Id: id, User: user, Db: db}.Handle()
 }
 func loginToClass(user user.User, db *sql.DB) {
 	classesId := dbHandler.GetTeacherClasses(db, user)
@@ -40,5 +39,6 @@ func loginToClass(user user.User, db *sql.DB) {
 	var id string
 	fmt.Println("ENTER NAME OF THE CLASS : ")
 	fmt.Scan(&id)
-	class.Handle(id)
+	//TODO check if id is valid
+	class.TeacherClass{Id: id, User: user, Db: db}.Handle()
 }
