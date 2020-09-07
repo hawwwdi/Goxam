@@ -23,7 +23,6 @@ func SetDb() *sql.DB {
 func CloseDB() {
 	defer db.Close()
 }
-
 //#################################################################       SAVING USERS ON DATA BASE :
 func SaveTeacher(user user.User) {
 	stmt, err := db.Prepare(`INSERT INTO teachers VALUES (?,?,?);`)

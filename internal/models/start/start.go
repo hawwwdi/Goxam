@@ -16,9 +16,6 @@ var Students = make(map[string]user.User)
 // loading users from data base and starting the app
 func Start() {
 	dbHandler.LoadUsersFromDb(Teachers, Students)
-	fmt.Println(Teachers)
-	fmt.Println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-	fmt.Println(Students)
 	for true {
 		fmt.Println("1 ) sign up \n2 ) login ")
 		var chosen int
