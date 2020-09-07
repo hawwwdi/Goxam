@@ -31,5 +31,5 @@ func seeRequests(class TeacherClass) {
 	fmt.Println("ENTER STUDENT EMAIL : ")
 	fmt.Scan(&email)
 	//TODO check student email to be valid
-	dbHandler.AddStudent(class.Id,email,class.Db)
+	dbHandler.AddStudentTOCLass(class.Id,email,class.Db)
 }

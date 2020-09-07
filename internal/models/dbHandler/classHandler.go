@@ -39,7 +39,7 @@ func GetRequests(db *sql.DB, id string) map[string]string {
 	}
 	return reqs
 }
-func AddStudent(id, email string, db *sql.DB) {
+func AddStudentTOCLass(id, email string, db *sql.DB) {
 	stmt, err := db.Prepare(`INSERT INTO class_participation VALUES (?,?);`)
 	errHandler(err)
 	defer stmt.Close()
@@ -47,7 +47,7 @@ func AddStudent(id, email string, db *sql.DB) {
 	errHandler(err)
 	ro, err := r.RowsAffected()
 	errHandler(err)
-	fmt.Println("INSERTED RECORD to students", ro)
+	fmt.Println("INSERTED RECORD to classParticipation", ro)
 }
 
 ////////////////////////////////////////////////////////////////////////// END OF PART /
