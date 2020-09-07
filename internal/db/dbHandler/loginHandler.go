@@ -8,14 +8,12 @@ import (
 	"log"
 )
 
-// getting data base from connection and return it to app
 var db *sql.DB
 //setting db pointer as a global value in dbHandler package
 func init() {
 	db = SetDb()
 }
 func SetDb() *sql.DB {
-	fmt.Println("FUCKKK")
 	db, err := sql.Open("mysql",
 		"root:armin3011@tcp(127.0.0.1:3306)/Goxam")
 	errHandler(err)
@@ -39,7 +37,7 @@ func SaveStudent(user user.User) {
 	errHandler(err)
 	saveUser(stmt, user)
 }
-
+//common method to save teachers and students
 func saveUser(stmt *sql.Stmt, user user.User) {
 	defer stmt.Close()
 	r, err := stmt.Exec(user.Email, user.UserName, string(user.PassWord))
@@ -50,8 +48,8 @@ func saveUser(stmt *sql.Stmt, user user.User) {
 }
 
 //################################################################################################# END PART /
-
 //################################################################## LOADING USERS FROM DATA BASE :
+//read users from data base and put them in 2 maps (1 for teachers and other one for students )
 func LoadUsersFromDb(teachers map[string]user.User, students map[string]user.User) {
 	rows, err2 := db.Query("SELECT * FROM Goxam.teachers")
 	errHandler(err2)

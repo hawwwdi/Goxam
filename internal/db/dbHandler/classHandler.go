@@ -21,7 +21,7 @@ func SaveClass(user user.User, id string) {
 }
 
 //get each teacher classes from db
-func GetTeacherClasses( user user.User) map[int]string {
+func GetTeacherClasses( user user.User) map[string]string {
 	rows, err2 := db.Query("SELECT class_id FROM Goxam.classes WHERE teacher_email= ?", user.Email)
 	errHandler(err2)
 	return getClasses(rows)
@@ -49,6 +49,7 @@ func AddStudentTOCLass(id, email string) {
 	ro, err := r.RowsAffected()
 	errHandler(err)
 	fmt.Println("INSERTED RECORD to classParticipation", ro)
+	//removing request after accepting it
 	RemoveRequest(id,email)
 }
 func RemoveRequest(id , email string)  {
@@ -62,7 +63,7 @@ func RemoveRequest(id , email string)  {
 }
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 //////////////////////////////////////////////////////////////////////// STUDENTS PART :
-func GetStudentsClasses( user user.User) map[int]string {
+func GetStudentsClasses( user user.User) map[string]string {
 	rows, err2 := db.Query("SELECT class_id FROM Goxam.class_participation WHERE student_email= ?", user.Email)
 	errHandler(err2)
 	return getClasses(rows)
@@ -85,6 +86,7 @@ func CheckClass( user user.User, id string) string {
 		return "ok"
 	}
 }
+//check if student is already in class
 func checkParticipated(user user.User, id string, db *sql.DB) bool {
 	classes := GetStudentsClasses( user)
 	for _, value := range classes {
@@ -108,14 +110,12 @@ func SendRequest(user user.User, id string) {
 }
 
 ////////////////////////////////////////////////////////////////////////// END OF PART /
-func getClasses(rows *sql.Rows) map[int]string {
-	var classesId = make(map[int]string)
+func getClasses(rows *sql.Rows) map[string]string {
+	var classesId = make(map[string]string)
 	var classId string
-	var counter = 0
 	for rows.Next() {
 		err := rows.Scan(&classId)
-		classesId[counter] = classId
-		counter += 1
+		classesId[classId] = classId
 		errHandler(err)
 	}
 	return classesId

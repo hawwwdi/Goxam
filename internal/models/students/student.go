@@ -8,7 +8,7 @@ import (
 )
 
 func Handle(user user.User) {
-	fmt.Println("Hello student " + user.UserName + " to your portal . ")
+	fmt.Println("Hello student " + user.UserName + " Welcome to your portal . ")
 	fmt.Println("1 ) see test results  \n2 ) login to class \n3 ) sign up to a class ")
 	var chosen int
 	fmt.Scan(&chosen)
@@ -48,6 +48,11 @@ func loginToClass(user user.User) {
 	var id string
 	fmt.Println("ENTER NAME OF THE CLASS : ")
 	fmt.Scan(&id)
-	//TODO check if id is valid
-	class.StudentClass{Id: id, User: user}.Handle()
+	_,ok:= classesId[id]
+	if ok{
+		class.StudentClass{Id: id, User: user}.Handle()
+	}else {
+		fmt.Println("unknown id")
+		loginToClass(user)
+	}
 }

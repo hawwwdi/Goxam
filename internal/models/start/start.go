@@ -25,7 +25,7 @@ func Start() {
 		fmt.Scan(&chosen)
 		switch chosen {
 		//TODO
-		// adding go before each func cause capabality to handle lots of reauests
+		// adding go before each func cause capabality to handle lots of requests
 		case 1:
 			signUp()
 		case 2:

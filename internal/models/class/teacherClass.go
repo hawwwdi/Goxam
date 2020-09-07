@@ -30,6 +30,8 @@ func checkRequests(class TeacherClass) {
 	var email string
 	fmt.Println("ENTER STUDENT EMAIL : ")
 	fmt.Scan(&email)
-	//TODO check student email to be valid
-	dbHandler.AddStudentTOCLass(class.Id,email)
+	_,ok := reqs[email]
+	if ok{
+		dbHandler.AddStudentTOCLass(class.Id,email)
+	}
 }

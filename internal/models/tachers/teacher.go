@@ -38,6 +38,11 @@ func loginToClass(user user.User) {
 	var id string
 	fmt.Println("ENTER NAME OF THE CLASS : ")
 	fmt.Scan(&id)
-	//TODO check if id is valid
-	class.TeacherClass{Id: id, User: user}.Handle()
+	_,ok:=classesId[id]
+	if ok {
+		class.TeacherClass{Id: id, User: user}.Handle()
+	}else {
+		fmt.Println("unknown id")
+		loginToClass(user)
+	}
 }
