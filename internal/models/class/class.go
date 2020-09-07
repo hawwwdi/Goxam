@@ -8,7 +8,6 @@ import (
 type TeacherClass struct {
 	Id string
 	User user.User
-	Db *sql.DB
 }
 type StudentClass struct {
 	Id string

@@ -3,11 +3,19 @@ package dbHandler
 import (
 	"database/sql"
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/hawwwdi/Goxam/internal/models/user"
 	"log"
 )
+
 // getting data base from connection and return it to app
-func GetDB() *sql.DB {
+var db *sql.DB
+
+func init() {
+	db = SetDb()
+}
+func SetDb() *sql.DB {
+	fmt.Println("FUCKKK")
 	db, err := sql.Open("mysql",
 		"root:armin3011@tcp(127.0.0.1:3306)/Goxam")
 	errHandler(err)
@@ -15,15 +23,18 @@ func GetDB() *sql.DB {
 	errHandler(err)
 	return db
 }
+func CloseDB() {
+	defer db.Close()
+}
 
 //#################################################################       SAVING USERS ON DATA BASE :
-func SaveTeacher(db *sql.DB, user user.User) {
+func SaveTeacher(user user.User) {
 	stmt, err := db.Prepare(`INSERT INTO teachers VALUES (?,?,?);`)
 	errHandler(err)
 	saveUser(stmt, user)
 }
 
-func SaveStudent(db *sql.DB, user user.User) {
+func SaveStudent(user user.User) {
 	stmt, err := db.Prepare(`INSERT INTO students VALUES (?,?,?);`)
 	errHandler(err)
 	saveUser(stmt, user)
@@ -37,10 +48,11 @@ func saveUser(stmt *sql.Stmt, user user.User) {
 	errHandler(err)
 	fmt.Println("INSERTED RECORD to students or teachers", ro)
 }
+
 //################################################################################################# END PART /
 
 //################################################################## LOADING USERS FROM DATA BASE :
-func LoadUsersFromDb(db *sql.DB, teachers map[string]user.User, students map[string]user.User) {
+func LoadUsersFromDb(teachers map[string]user.User, students map[string]user.User) {
 	rows, err2 := db.Query("SELECT * FROM Goxam.teachers")
 	errHandler(err2)
 	putUsers(rows, teachers, 1)
@@ -57,6 +69,7 @@ func putUsers(rows *sql.Rows, users map[string]user.User, typee int) {
 		users[newUser.Email] = newUser
 	}
 }
+
 //################################################################################################## END PART /
 func errHandler(err error) {
 	if err != nil {

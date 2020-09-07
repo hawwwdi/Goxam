@@ -2,7 +2,7 @@ package class
 
 import (
 	"fmt"
-	"github.com/hawwwdi/Goxam/internal/models/dbHandler"
+	"github.com/hawwwdi/Goxam/internal/db/dbHandler"
 )
 
 func (class TeacherClass) Handle() {
@@ -21,7 +21,7 @@ func seeResults(class TeacherClass) {
 
 //see requests for a class and add students to class based on them
 func checkRequests(class TeacherClass) {
-	reqs := dbHandler.GetRequests(class.Db, class.Id)
+	reqs := dbHandler.GetRequests(class.Id)
 	for std, cl := range reqs {
 		fmt.Print(" REQUEST FROM :  " + std + "  FOR CLASS : " + cl)
 		fmt.Println()
@@ -31,5 +31,5 @@ func checkRequests(class TeacherClass) {
 	fmt.Println("ENTER STUDENT EMAIL : ")
 	fmt.Scan(&email)
 	//TODO check student email to be valid
-	dbHandler.AddStudentTOCLass(class.Id,email,class.Db)
+	dbHandler.AddStudentTOCLass(class.Id,email)
 }

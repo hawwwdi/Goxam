@@ -1,23 +1,21 @@
 package start
 
 import (
-	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/hawwwdi/Goxam/internal/models/dbHandler"
+
+	"github.com/hawwwdi/Goxam/internal/db/dbHandler"
 	"github.com/hawwwdi/Goxam/internal/models/students"
 	"github.com/hawwwdi/Goxam/internal/models/tachers"
 	"github.com/hawwwdi/Goxam/internal/models/user"
 	"golang.org/x/crypto/bcrypt"
 )
 
-var db *sql.DB
 var Teachers = make(map[string]user.User)
 var Students = make(map[string]user.User)
+
 // loading users from data base and starting the app
 func Start() {
-	db = dbHandler.GetDB()
-	dbHandler.LoadUsersFromDb(db, Teachers, Students)
+	dbHandler.LoadUsersFromDb(Teachers, Students)
 	fmt.Println(Teachers)
 	fmt.Println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
 	fmt.Println(Students)
@@ -29,15 +27,16 @@ func Start() {
 		//TODO
 		// adding go before each func cause capabality to handle lots of reauests
 		case 1:
-			signUp(db)
+			signUp()
 		case 2:
-			login(db)
+			login()
 		default:
 			print("unsupported input !")
 		}
 	}
-	defer db.Close()
+	defer dbHandler.CloseDB()
 }
+
 //##########################################################################################################
 // a console version for getting user info
 func getUser() user.User {
@@ -54,60 +53,64 @@ func getUser() user.User {
 	newUser := user.User{UserName: Name, Email: Email, PassWord: []byte(Password), Type: Type}
 	return newUser
 }
+
 //##########################################################################################################
 // signup part
-func signUp(db *sql.DB) {
+func signUp() {
 	fmt.Println("signing in ... ")
 	newUser := getUser()
 	if checkSignUp(newUser) {
 		fmt.Print("You have already signed in ! ")
-		login(nil)
+		login()
 	} else {
-		saveUserToDB(db, newUser)
+		saveUserToDB(newUser)
 		if newUser.Type == 1 {
-			teachers.Handle(newUser,db)
+			teachers.Handle(newUser)
 		} else {
-			students.Handle(newUser,db)
+			students.Handle(newUser)
 		}
 	}
 }
+
 // function to save new user to data base and our maps of users
-func saveUserToDB(db *sql.DB, user user.User) {
+func saveUserToDB(user user.User) {
 	user.SetEncryptPassWord(user.PassWord)
 	if user.Type == 1 {
 		Teachers[user.Email] = user
-		dbHandler.SaveTeacher(db, user)
+		dbHandler.SaveTeacher(user)
 	} else {
 		Students[user.Email] = user
-		dbHandler.SaveStudent(db, user)
+		dbHandler.SaveStudent(user)
 	}
 }
+
 //#########################################################################################################
 //method for logging in
-func login(db *sql.DB) {
+func login() {
 	fmt.Println("logging in ... ")
 	newUser := getUser()
 	if checkSignUp(newUser) {
 		if checkPass(newUser) {
 			if newUser.Type == 1 {
-				teachers.Handle(newUser,db)
+				teachers.Handle(newUser)
 			} else {
-				students.Handle(newUser,db)
+				students.Handle(newUser)
 			}
 		} else {
 			fmt.Println("WRONG PASS WORD")
 		}
 	} else {
 		fmt.Println("you have not sign up yet ! pleas sign up first . ")
-		signUp(nil)
+		signUp()
 	}
 }
+
 //this function check inputted password to be correct
 func checkPass(user user.User) bool {
 	var err error
-	if user.Type==1 {
+	if user.Type == 1 {
 		err = bcrypt.CompareHashAndPassword(Teachers[user.Email].PassWord, user.PassWord)
-	}else {
+	} else {
 		err = bcrypt.CompareHashAndPassword(Students[user.Email].PassWord, user.PassWord)
 	}
 	if err != nil {
@@ -115,6 +118,7 @@ func checkPass(user user.User) bool {
 	}
 	return true
 }
+
 //#########################################################################################################
 //this method check if the user exists in our data base or not
 func checkSignUp(user user.User) bool {
@@ -130,4 +134,5 @@ func checkSignUp(user user.User) bool {
 		return true
 	}
 }
+
 //##########################################################################################################
