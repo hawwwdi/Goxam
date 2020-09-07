@@ -10,7 +10,7 @@ import (
 
 // getting data base from connection and return it to app
 var db *sql.DB
-
+//setting db pointer as a global value in dbHandler package
 func init() {
 	db = SetDb()
 }
