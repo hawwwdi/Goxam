@@ -61,7 +61,15 @@ func checkParticipated(user user.User, id string, db *sql.DB) bool {
 	return false
 }
 //TODO
-func SendRequest(*sql.DB, user.User, string) {
+func SendRequest(db *sql.DB,user  user.User,id string) {
+	stmt, err := db.Prepare(`INSERT INTO requests VALUES (?,?);`)
+	errHandler(err)
+	defer stmt.Close()
+	r, err := stmt.Exec(user.Email, id)
+	errHandler(err)
+	ro, err := r.RowsAffected()
+	errHandler(err)
+	fmt.Println("INSERTED RECORD to requests", ro)
 }
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 func getClasses(rows *sql.Rows) map[int]string {
