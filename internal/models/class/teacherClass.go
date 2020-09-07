@@ -6,9 +6,10 @@ import (
 )
 
 func (class TeacherClass) Handle() {
-	createExam(class)
-	seeResults(class)
-	seeResults(class)
+	fmt.Println("fuckkkkkk")
+	//createExam(class)
+	//seeResults(class)
+	seeRequests(class)
 }
 
 //TODO creating exam
