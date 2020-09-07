@@ -21,7 +21,7 @@ func seeResults(class TeacherClass) {
 
 //TODO see request of chosen class
 func seeRequests(class TeacherClass) {
-	reqs := dbHandler.GetRequests(class)
+	reqs := dbHandler.GetRequests(class.Db, class.Id)
 	for cl, std := range reqs {
 		fmt.Print("REQUEST FROM :  " + std + "  FOR CLASS : " + cl)
 		fmt.Println()

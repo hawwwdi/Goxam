@@ -3,7 +3,6 @@ package dbHandler
 import (
 	"database/sql"
 	"fmt"
-	"github.com/hawwwdi/Goxam/internal/models/class"
 	"github.com/hawwwdi/Goxam/internal/models/user"
 )
 
@@ -27,14 +26,14 @@ func GetTeacherClasses(db *sql.DB, user user.User) map[int]string {
 	return getClasses(rows)
 }
 //get a class and return list of requests to join to class
-func GetRequests(class class.TeacherClass) map[string]string {
+func GetRequests(db *sql.DB,id string) map[string]string {
 	var reqs = make(map[string]string)
-	rows, err2 := class.Db.Query("SELECT class_id FROM Goxam.requests WHERE class_id= ?", class.Id)
+	rows, err2 := db.Query("SELECT class_id FROM Goxam.requests WHERE class_id= ?", id)
 	errHandler(err2)
 	for rows.Next() {
-		var id, std string
-		err := rows.Scan(&std, &id)
-		reqs[id] = std
+		var classId, std string
+		err := rows.Scan(&std, &classId)
+		reqs[classId] = std
 		errHandler(err)
 	}
 	return reqs
