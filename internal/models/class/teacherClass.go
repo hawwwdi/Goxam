@@ -5,8 +5,10 @@ func (class TeacherClass) Handle() {
 	seeResults(class)
 }
 
+//TODO creating exam
 func createExam(class TeacherClass) {
 }
 
+//TODO showing results of test
 func seeResults(class TeacherClass) {
 }
