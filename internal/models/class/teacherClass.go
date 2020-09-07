@@ -8,7 +8,7 @@ import (
 func (class TeacherClass) Handle() {
 	//createExam(class)
 	//seeResults(class)
-	seeRequests(class)
+	checkRequests(class)
 }
 
 //TODO creating exam
@@ -20,7 +20,7 @@ func seeResults(class TeacherClass) {
 }
 
 //see requests for a class and add students to class based on them
-func seeRequests(class TeacherClass) {
+func checkRequests(class TeacherClass) {
 	reqs := dbHandler.GetRequests(class.Db, class.Id)
 	for std, cl := range reqs {
 		fmt.Print(" REQUEST FROM :  " + std + "  FOR CLASS : " + cl)
