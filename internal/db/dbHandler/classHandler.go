@@ -49,8 +49,10 @@ func AddStudentTOCLass(id, email string) {
 	ro, err := r.RowsAffected()
 	errHandler(err)
 	fmt.Println("INSERTED RECORD to classParticipation", ro)
+	removeRequest(id,email)
 }
-
+func removeRequest(id , email string)  {
+}
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 //////////////////////////////////////////////////////////////////////// STUDENTS PART :
 func GetStudentsClasses( user user.User) map[int]string {
