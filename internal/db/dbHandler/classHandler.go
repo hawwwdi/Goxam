@@ -49,9 +49,16 @@ func AddStudentTOCLass(id, email string) {
 	ro, err := r.RowsAffected()
 	errHandler(err)
 	fmt.Println("INSERTED RECORD to classParticipation", ro)
-	removeRequest(id,email)
+	RemoveRequest(id,email)
 }
-func removeRequest(id , email string)  {
+func RemoveRequest(id , email string)  {
+	res, err := db.Exec("DELETE FROM requests WHERE class_id=? AND  student_email = ?", id , email)
+	if err == nil {
+		count, err := res.RowsAffected()
+		if err == nil {
+			fmt.Println(count)
+		}
+	}
 }
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 //////////////////////////////////////////////////////////////////////// STUDENTS PART :

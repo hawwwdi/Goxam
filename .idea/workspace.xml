@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b30e9dd6-16f4-42c7-8d1f-eca2c9bb3637" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/internal/db/dbHandler/classHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/db/dbHandler/classHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/start/start.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/start/start.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

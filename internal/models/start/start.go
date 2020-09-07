@@ -15,6 +15,7 @@ var Students = make(map[string]user.User)
 
 // loading users from data base and starting the app
 func Start() {
+	//dbHandler.RemoveRequest("armin_armin2","armingodarzi1380@gmail.com")
 	dbHandler.LoadUsersFromDb(Teachers, Students)
 	fmt.Println(Teachers)
 	fmt.Println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
