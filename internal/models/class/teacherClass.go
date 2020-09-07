@@ -19,7 +19,7 @@ func createExam(class TeacherClass) {
 func seeResults(class TeacherClass) {
 }
 
-//TODO see request of chosen class
+//see requests for a class and add students to class based on them
 func seeRequests(class TeacherClass) {
 	reqs := dbHandler.GetRequests(class.Db, class.Id)
 	for std, cl := range reqs {
