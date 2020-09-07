@@ -26,13 +26,20 @@ func GetTeacherClasses(db *sql.DB, user user.User) map[int]string {
 	errHandler(err2)
 	return getClasses(rows)
 }
+//get a class and return list of requests to join to class
 func GetRequests(class class.TeacherClass) map[string]string {
-	var reqs =make(map[string]string)
+	var reqs = make(map[string]string)
 	rows, err2 := class.Db.Query("SELECT class_id FROM Goxam.requests WHERE class_id= ?", class.Id)
 	errHandler(err2)
-	
+	for rows.Next() {
+		var id, std string
+		err := rows.Scan(&std, &id)
+		reqs[id] = std
+		errHandler(err)
+	}
 	return reqs
 }
+
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 //////////////////////////////////////////////////////////////////////// STUDENTS PART :
 func GetStudentsClasses(db *sql.DB, user user.User) map[int]string {
