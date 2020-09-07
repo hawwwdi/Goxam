@@ -43,7 +43,7 @@ func CheckClass(db *sql.DB, user user.User, id string) string {
 		err := rows.Scan(&existence)
 		errHandler(err)
 	}
-	if existence=="0" {
+	if existence == "0" {
 		return "could not find the class ! "
 	} else if checkParticipated(user, id, db) {
 		return "your already in class ! "
@@ -60,8 +60,9 @@ func checkParticipated(user user.User, id string, db *sql.DB) bool {
 	}
 	return false
 }
-//TODO
-func SendRequest(db *sql.DB,user  user.User,id string) {
+
+//after checkClass , save class id and student email on requests table
+func SendRequest(db *sql.DB, user user.User, id string) {
 	stmt, err := db.Prepare(`INSERT INTO requests VALUES (?,?);`)
 	errHandler(err)
 	defer stmt.Close()
@@ -71,6 +72,7 @@ func SendRequest(db *sql.DB,user  user.User,id string) {
 	errHandler(err)
 	fmt.Println("INSERTED RECORD to requests", ro)
 }
+
 ////////////////////////////////////////////////////////////////////////// END OF PART /
 func getClasses(rows *sql.Rows) map[int]string {
 	var classesId = make(map[int]string)
