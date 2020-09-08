@@ -8,10 +8,10 @@ import (
 
 type Exam struct {
 	question.Dsc
-	id   string
-	dateTime time.Time
-	time time.Duration
-	noq  int // noq is alias for Number of question
+	Id   string
+	DateTime time.Time
+	Time time.Duration
+	Noq  int // noq is alias for Number of question
 	Forfeit int
 }
 
@@ -19,26 +19,26 @@ type Exam struct {
 func NewExam(dsc question.Dsc,dateTime time.Time, time time.Duration, id string, forfeit int) Exam {
 	e := new(Exam)
 	e.Dsc = dsc
-	e.dateTime = dateTime
-	e.time = time
-	e.id = id
+	e.DateTime = dateTime
+	e.Time = time
+	e.Id = id
 	e.Forfeit = forfeit
+	//todo save the exam
 	return *e
 }
 
 func (e *Exam) AddQuestion(ques question.Question) {
 	var id string
-
 	switch ques.(type) {
 	case *question.Test:
-		id = fmt.Sprintf("%v_QT%v", e.id, e.noq)
+		id = fmt.Sprintf("%v_QT%v", e.Id, e.Noq)
 	case *question.ShortAnswer:
-		id = fmt.Sprintf("%v_QS%v", e.id, e.noq)
+		id = fmt.Sprintf("%v_QS%v", e.Id, e.Noq)
 	}
 	ques.SetId(id)
 	_ = ques.Save()
 	//todo handle above error
-	e.noq++
+	e.Noq++
 }
 
 func (e *Exam) RemQuestion(id string) error {
@@ -50,13 +50,13 @@ func (e *Exam) RemQuestion(id string) error {
 	return nil
 }
 
-func (e *Exam) SetTime(duration time.Duration) {
+/*func (e *Exam) SetTime(duration time.Duration) {
 	e.time = duration
 }
 
 func (e *Exam) Id () string {
 	return e.id
-}
+}*/
 
 func (e *Exam) String() string {
 	return "this is string"
