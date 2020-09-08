@@ -1,13 +1,13 @@
 package question
 
 type TestOpt struct {
-	Description
+	Dsc
 	Value bool
 }
 
-func NewTestOpt(dsc Description, value bool) TestOpt {
+func NewTestOpt(dsc Dsc, value bool) TestOpt {
 	o := new(TestOpt)
-	o.Description = dsc
+	o.Dsc = dsc
 	o.Value = value
 	return *o
 }

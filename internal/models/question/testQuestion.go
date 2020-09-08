@@ -8,9 +8,9 @@ type Test struct {
 	Options []TestOpt
 }
 
-func NewTest(dsc Description, mc bool) Test {
+func NewTest(dsc Dsc, mc bool) Test {
 	t := new(Test)
-	t.Description = dsc
+	t.Dsc = dsc
 	t.MultipleChoice = mc
 	t.Options = make([]TestOpt, 0, 2)
 	return *t

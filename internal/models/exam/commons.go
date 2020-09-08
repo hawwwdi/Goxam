@@ -6,7 +6,7 @@ import (
 )
 
 type Exam struct {
-	question.Description
+	question.Dsc
 	id   string
 	time time.Duration
 	noq  int // noq is alias for Number of question
@@ -14,9 +14,9 @@ type Exam struct {
 }
 
 // id in format $ClassId_examIndex
-func NewExam(dsc question.Description, time time.Duration, id string, forfeit int) Exam {
+func NewExam(dsc question.Dsc, time time.Duration, id string, forfeit int) Exam {
 	e := new(Exam)
-	e.Description = dsc
+	e.Dsc = dsc
 	e.time = time
 	e.id = id
 	e.Forfeit = forfeit

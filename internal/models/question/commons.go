@@ -10,13 +10,14 @@ type Question interface {
 	JSoner
 }
 
-type Description struct {
+// Dsc is alias for Description
+type Dsc struct {
 	Text    string
 	Picture string
 }
 
-func NewDescription(txt , img string) Description {
-	d := new(Description)
+func NewDescription(txt , img string) Dsc {
+	d := new(Dsc)
 	d.Text = txt
 	d.Picture = img
 	return *d
