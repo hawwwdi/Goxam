@@ -29,10 +29,10 @@ func NewExam(dsc question.Dsc,dateTime time.Time, time time.Duration, id string,
 func (e *Exam) AddQuestion(ques question.Question) {
 	var id string
 
-	switch t := ques.(type) {
-	case question.Test:
+	switch ques.(type) {
+	case *question.Test:
 		id = fmt.Sprintf("%v_QT%v", e.id, e.noq)
-	case question.ShortAnswer:
+	case *question.ShortAnswer:
 		id = fmt.Sprintf("%v_QS%v", e.id, e.noq)
 	}
 	ques.SetId(id)
