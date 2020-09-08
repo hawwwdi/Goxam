@@ -1,5 +1,13 @@
 package question
 
+type Kind int
+// QTest for test type
+// QSAns for short answer question
+const (
+	QTest = iota
+	QSAns
+)
+
 type JSoner interface {
 	JSon() string
 }
