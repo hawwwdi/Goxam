@@ -39,3 +39,8 @@ func (a *ShortAnswer) String() string {
 	//todo
 	return "this is string"
 }
+
+func (a *ShortAnswer) Save() error {
+	//todo
+	return nil
+}

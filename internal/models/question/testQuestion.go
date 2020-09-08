@@ -42,3 +42,9 @@ func (t *Test) String() string {
 	//todo
 	return "this is string"
 }
+
+
+func (t *Test) Save() error {
+	//todo
+	return nil
+}

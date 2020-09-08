@@ -6,6 +6,7 @@ type JSoner interface {
 
 type Question interface {
 	CheckAnswer(...string) bool
+	Save() error
 	String() string
 	JSoner
 }
