@@ -4,13 +4,15 @@ import "strconv"
 
 type Test struct {
 	Dsc
+	Id string
 	MultipleChoice bool
 	Options []TestOpt
 }
 
-func NewTest(dsc Dsc, mc bool) Test {
+func NewTest(dsc Dsc, id string, mc bool) Test {
 	t := new(Test)
 	t.Dsc = dsc
+	t.Id = id
 	t.MultipleChoice = mc
 	t.Options = make([]TestOpt, 0, 2)
 	return *t

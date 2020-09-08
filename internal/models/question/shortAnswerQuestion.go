@@ -4,12 +4,14 @@ import "strings"
 
 type ShortAnswer struct {
 	Dsc
+	Id string
 	Blanks []ShortAnswerOpt
 }
 
-func NewShortAnswer(dsc Dsc) ShortAnswer {
+func NewShortAnswer(dsc Dsc, id string) ShortAnswer {
 	s := new(ShortAnswer)
 	s.Dsc = dsc
+	s.Id = id
 	s.Blanks = make([]ShortAnswerOpt, 0, 1)
 	return *s
 }
