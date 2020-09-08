@@ -26,16 +26,22 @@ func NewExam(dsc question.Dsc,dateTime time.Time, time time.Duration, id string,
 	return *e
 }
 
-func (e *Exam) AddQuestion(question question.Question) {
-	//todo save question with exam id in database
-	id := fmt.Sprintf("%v_Q%v", e.id, e.noq)
-	question.SetId(id)
-	_ = question.Save()
+func (e *Exam) AddQuestion(ques question.Question) {
+	var id string
+
+	switch t := ques.(type) {
+	case question.Test:
+		id = fmt.Sprintf("%v_QT%v", e.id, e.noq)
+	case question.ShortAnswer:
+		id = fmt.Sprintf("%v_QS%v", e.id, e.noq)
+	}
+	ques.SetId(id)
+	_ = ques.Save()
 	//todo handle above error
 	e.noq++
 }
 
-func (e *Exam) RemQuestion(index int) error {
+func (e *Exam) RemQuestion(id string) error {
 	//todo remove question from database
 	// if question found
 	// rem question
