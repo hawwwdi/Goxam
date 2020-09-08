@@ -1,7 +1,5 @@
 package question
 
-import "image"
-
 type JSoner interface {
 	JSon() string
 }
@@ -14,10 +12,10 @@ type Question interface {
 
 type Description struct {
 	Text    string
-	Picture image.Image
+	Picture string
 }
 
-func NewDescription(txt string, img image.Image) Description {
+func NewDescription(txt , img string) Description {
 	d := new(Description)
 	d.Text = txt
 	d.Picture = img
