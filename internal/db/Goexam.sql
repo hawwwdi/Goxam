@@ -16,6 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `SA_questions`
+--
+
+DROP TABLE IF EXISTS `SA_questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `SA_questions` (
+  `id` varchar(255) NOT NULL,
+  `dsc` multilinestring NOT NULL,
+  `dsc_img_id` int NOT NULL,
+  `blanks` json NOT NULL,
+  UNIQUE KEY `SA_questions_dsc_img_id_uindex` (`dsc_img_id`),
+  UNIQUE KEY `SA_questions_id_uindex` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `SA_questions`
+--
+
+LOCK TABLES `SA_questions` WRITE;
+/*!40000 ALTER TABLE `SA_questions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `SA_questions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `class_participation`
 --
 
@@ -72,12 +98,14 @@ DROP TABLE IF EXISTS `exams`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `exams` (
-  `exam_id` varchar(100) NOT NULL,
   `class_id` varchar(100) NOT NULL,
+  `exam_id` varchar(100) NOT NULL,
+  `datetime` datetime NOT NULL,
   `time` int DEFAULT '30',
-  `negative_point` tinyint(1) DEFAULT '0',
-  `multiple_option` tinyint(1) DEFAULT '0',
-  `type` varchar(50) DEFAULT 'Test',
+  `forfeit` tinyint(1) DEFAULT '0',
+  `noq` int DEFAULT NULL,
+  `dsc` multilinestring DEFAULT NULL,
+  `dsc_img_id` varchar(255) DEFAULT NULL,
   UNIQUE KEY `exams_exam_id_uindex` (`exam_id`),
   KEY `class_id` (`class_id`),
   CONSTRAINT `class_id` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`)
@@ -91,6 +119,29 @@ CREATE TABLE `exams` (
 LOCK TABLES `exams` WRITE;
 /*!40000 ALTER TABLE `exams` DISABLE KEYS */;
 /*!40000 ALTER TABLE `exams` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `images` (
+  `id` varchar(255) NOT NULL,
+  `path` varchar(255) NOT NULL,
+  UNIQUE KEY `images_id_uindex` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -167,6 +218,31 @@ LOCK TABLES `teachers` WRITE;
 INSERT INTO `teachers` VALUES ('armingodarzi1380@gmail.com','armin','$2a$04$4qp.YoVJeXW0ZAPZek2NFeyNo3nE24ZQCKLytGC3JKShDkmOb3//6'),('hadi@gmail.com','hadi','$2a$04$f.99wH22JDNKZw9JAxeHiOgixp.yQdJGdh3JLcOaXwv0HcVGY52ja');
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `test_questions`
+--
+
+DROP TABLE IF EXISTS `test_questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `test_questions` (
+  `id` int NOT NULL,
+  `dsc` multilinestring DEFAULT NULL,
+  `Multiple_Choice` tinyint(1) NOT NULL DEFAULT '0',
+  `Options` json NOT NULL,
+  UNIQUE KEY `test_questions_id_uindex` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `test_questions`
+--
+
+LOCK TABLES `test_questions` WRITE;
+/*!40000 ALTER TABLE `test_questions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `test_questions` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -177,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-07 14:59:44
+-- Dump completed on 2020-09-09  2:16:41
