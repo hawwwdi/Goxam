@@ -4,15 +4,14 @@ import "strconv"
 
 type Test struct {
 	Dsc
-	Id string
+	id             string
 	MultipleChoice bool
-	Options []TestOpt
+	Options        []TestOpt
 }
 
-func NewTest(dsc Dsc, id string, mc bool) Test {
+func NewTest(dsc Dsc, mc bool) Test {
 	t := new(Test)
 	t.Dsc = dsc
-	t.Id = id
 	t.MultipleChoice = mc
 	t.Options = make([]TestOpt, 0, 2)
 	return *t
@@ -33,6 +32,10 @@ func (t *Test) CheckAnswer(answer ...string) bool {
 	return true
 }
 
+func (t *Test) SetId(id string) {
+	t.id = id
+}
+
 func (t *Test) JSon() string {
 	//todo
 	return "this is form"
@@ -42,7 +45,6 @@ func (t *Test) String() string {
 	//todo
 	return "this is string"
 }
-
 
 func (t *Test) Save() error {
 	//todo

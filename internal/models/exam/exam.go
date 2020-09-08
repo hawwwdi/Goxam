@@ -1,6 +1,7 @@
 package exam
 
 import (
+	"fmt"
 	"github.com/hawwwdi/Goxam/internal/models/question"
 	"time"
 )
@@ -27,6 +28,10 @@ func NewExam(dsc question.Dsc,dateTime time.Time, time time.Duration, id string,
 
 func (e *Exam) AddQuestion(question question.Question) {
 	//todo save question with exam id in database
+	id := fmt.Sprintf("%v_Q%v", e.id, e.noq)
+	question.SetId(id)
+	_ = question.Save()
+	//todo handle above error
 	e.noq++
 }
 

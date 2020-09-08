@@ -5,6 +5,7 @@ type JSoner interface {
 }
 
 type Question interface {
+	SetId(string)
 	CheckAnswer(...string) bool
 	Save() error
 	String() string

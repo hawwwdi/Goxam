@@ -4,14 +4,13 @@ import "strings"
 
 type ShortAnswer struct {
 	Dsc
-	Id string
+	id     string
 	Blanks []ShortAnswerOpt
 }
 
-func NewShortAnswer(dsc Dsc, id string) ShortAnswer {
+func NewShortAnswer(dsc Dsc) ShortAnswer {
 	s := new(ShortAnswer)
 	s.Dsc = dsc
-	s.Id = id
 	s.Blanks = make([]ShortAnswerOpt, 0, 1)
 	return *s
 }
@@ -29,6 +28,9 @@ func (a *ShortAnswer) CheckAnswer(answer ...string) bool {
 	return true
 }
 
+func (a *ShortAnswer) SetId(id string) {
+	a.id = id
+}
 
 func (a *ShortAnswer) JSon() string {
 	//todo
