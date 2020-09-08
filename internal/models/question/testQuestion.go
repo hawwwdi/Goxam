@@ -36,6 +36,10 @@ func (t *Test) SetId(id string) {
 	t.id = id
 }
 
+func (t *Test) GetId() string{
+	return t.id
+}
+
 func (t *Test) JSon() string {
 	//todo
 	return "this is form"

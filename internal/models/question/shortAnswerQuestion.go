@@ -32,6 +32,10 @@ func (a *ShortAnswer) SetId(id string) {
 	a.id = id
 }
 
+func (a *ShortAnswer) GetId() string{
+	return a.id
+}
+
 func (a *ShortAnswer) JSon() string {
 	//todo
 	return "this is form"
