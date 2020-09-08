@@ -21,6 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b30e9dd6-16f4-42c7-8d1f-eca2c9bb3637" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/internal/db/dbHandler/loginHandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/db/dbHandler/loginHandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/start/start.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/start/start.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/user/user.go" afterDir="false" />
+>>>>>>> armin
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +36,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Go File" />
         <option value="Go Application" />
         <option value="tsconfig.json" />
         <option value="Go File" />
@@ -46,16 +53,64 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
+=======
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultGoTemplateProperty" value="Go Application" />
+>>>>>>> armin
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/internal/db/goxam.sql" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
+  </component>
+  <component name="RunManager" selected="Go Build.go build app.go">
+    <configuration name="goxam.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/internal/db/goxam.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="c94ae212-81f5-469e-a8f1-a57049af9cd4" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build app.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Goxam" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/cmd/app/app.go" />
+      <package value="github.com/hawwwdi/Goxam" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build testMethods.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="Goxam" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/internal/models/testMethods.go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Database Script.goxam.sql" />
+      <item itemvalue="Go Build.go build testMethods.go" />
+      <item itemvalue="Go Build.go build app.go" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build app.go" />
+        <item itemvalue="Go Build.go build testMethods.go" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="RunManager" selected="Go Test.go test github.com/hawwwdi/Goxam/internal/models/exam">
     <configuration name="goxam.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
@@ -81,6 +136,16 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b30e9dd6-16f4-42c7-8d1f-eca2c9bb3637" name="Default Changelist" comment="" />
+      <created>1599205079782</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599205079782</updated>
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
@@ -101,6 +166,7 @@
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="514" y="234" width="400" height="334" key="#Go_Modules/72.27.1294.741@72.27.1294.741" timestamp="1599162286615" />
+<<<<<<< HEAD
     <state x="72" y="245" width="1284" height="311" key="#SQL_Dialects" timestamp="1599171030242">
       <screen x="72" y="27" width="1294" height="741" />
     </state>
@@ -141,5 +207,63 @@
       <screen x="72" y="27" width="1294" height="741" />
     </state>
     <state x="382" y="89" width="672" height="678" key="search.everywhere.popup/72.27.1294.741@72.27.1294.741" timestamp="1599416301171" />
+=======
+    <state x="657" y="376" width="732" height="644" key="#Inspections" timestamp="1599386185995">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="657" y="376" width="732" height="644" key="#Inspections/72.27.1848.1053@72.27.1848.1053" timestamp="1599386185995" />
+    <state x="219" y="399" width="1543" height="315" key="#SQL_Dialects" timestamp="1599235066603">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="219" y="399" width="1543" height="315" key="#SQL_Dialects/72.27.1848.1053@72.27.1848.1053" timestamp="1599235066603" />
+    <state x="591" y="215" width="816" height="850" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599300202897">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="591" y="215" width="816" height="850" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1599300202897" />
+    <state x="775" y="311" key="FileChooserDialogImpl" timestamp="1599297953351">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="775" y="311" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1599297953351" />
+    <state width="1800" height="597" key="GridCell.Tab.0.bottom" timestamp="1599497065707">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1800" height="597" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1599497065707" />
+    <state width="1800" height="597" key="GridCell.Tab.0.center" timestamp="1599497065707">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1800" height="597" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1599497065707" />
+    <state width="1800" height="597" key="GridCell.Tab.0.left" timestamp="1599497065706">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1800" height="597" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1599497065706" />
+    <state width="1800" height="597" key="GridCell.Tab.0.right" timestamp="1599497065707">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1800" height="597" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1599497065707" />
+    <state width="363" height="542" key="HiddenNamespacesPopup" timestamp="1599298366997">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="363" height="542" key="HiddenNamespacesPopup/72.27.1848.1053@72.27.1848.1053" timestamp="1599298366997" />
+    <state x="470" y="188" width="1052" height="737" key="SettingsEditor" timestamp="1599298751423">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="470" y="188" width="1052" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1599298751423" />
+    <state x="891" y="429" width="199" height="255" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1599298339332">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="891" y="429" width="199" height="255" key="com.intellij.database.actions.DdlActions$CreateObject$1/72.27.1848.1053@72.27.1848.1053" timestamp="1599298339332" />
+    <state x="892" y="438" width="398" height="268" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1599298770266">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="892" y="438" width="398" height="268" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/72.27.1848.1053@72.27.1848.1053" timestamp="1599298770266" />
+    <state x="309" y="227" width="1482" height="770" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1599415412225">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="309" y="227" width="1482" height="770" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1599415412225" />
+    <state x="812" y="312" width="358" height="490" key="refactoring.ChangeSignatureDialog" timestamp="1599389116839">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="812" y="312" width="358" height="490" key="refactoring.ChangeSignatureDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1599389116839" />
+>>>>>>> armin
   </component>
 </project>
