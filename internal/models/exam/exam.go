@@ -8,15 +8,17 @@ import (
 type Exam struct {
 	question.Dsc
 	id   string
+	dateTime time.Time
 	time time.Duration
 	noq  int // noq is alias for Number of question
 	Forfeit int
 }
 
 // id in format $ClassId_examIndex
-func NewExam(dsc question.Dsc, time time.Duration, id string, forfeit int) Exam {
+func NewExam(dsc question.Dsc,dateTime time.Time, time time.Duration, id string, forfeit int) Exam {
 	e := new(Exam)
 	e.Dsc = dsc
+	e.dateTime = dateTime
 	e.time = time
 	e.id = id
 	e.Forfeit = forfeit
