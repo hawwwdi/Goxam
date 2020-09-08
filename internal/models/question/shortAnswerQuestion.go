@@ -28,7 +28,7 @@ func (a *ShortAnswer) CheckAnswer(answer ...string) bool {
 }
 
 
-func (a *ShortAnswer) Form() string {
+func (a *ShortAnswer) JSon() string {
 	//todo
 	return "this is form"
 }

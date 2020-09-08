@@ -31,7 +31,7 @@ func (t *Test) CheckAnswer(answer ...string) bool {
 	return true
 }
 
-func (t *Test) Form () string {
+func (t *Test) JSon() string {
 	//todo
 	return "this is form"
 }

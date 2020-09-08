@@ -5,7 +5,7 @@ type Dsc struct {
 	Description
 }
 
-func (d *Dsc) Form() string {
+func (d *Dsc) JSon() string {
 	//todo
 	return "this is form"
 }

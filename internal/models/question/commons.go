@@ -2,14 +2,14 @@ package question
 
 import "image"
 
-type Former interface {
-	Form() string
+type JSoner interface {
+	JSon() string
 }
 
 type Question interface {
 	CheckAnswer(...string) bool
 	String() string
-	Former
+	JSoner
 }
 
 type Description struct {

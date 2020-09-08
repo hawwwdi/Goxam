@@ -12,9 +12,9 @@ func NewTestOpt(dsc Description, value bool) TestOpt {
 	return *o
 }
 
-func (o *TestOpt) Form() string {
+func (o *TestOpt) JSon() string {
 	//todo
-	return "this is form"
+	return "this is json"
 }
 
 func (o *TestOpt) String() string {
@@ -32,9 +32,9 @@ func NewShortAnswerOpt(ans string) ShortAnswerOpt {
 	return *s
 }
 
-func (o *ShortAnswerOpt) Form() string {
+func (o *ShortAnswerOpt) JSon() string {
 	//todo
-	return "this is form"
+	return "this is json"
 }
 
 func (o *ShortAnswerOpt) String() string {
