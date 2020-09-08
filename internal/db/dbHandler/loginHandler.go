@@ -10,9 +10,9 @@ import (
 var db *sql.DB
 //setting db pointer as a global value in dbHandler package
 func init() {
-	db = SetDb()
+	db = setDb()
 }
-func SetDb() *sql.DB {
+func setDb() *sql.DB {
 	db, err := sql.Open("mysql",
 		"root:armin3011@tcp(127.0.0.1:3306)/Goxam")
 	errHandler(err)
@@ -20,8 +20,8 @@ func SetDb() *sql.DB {
 	errHandler(err)
 	return db
 }
-func CloseDB() {
-	defer db.Close()
+func CloseDB() error {
+	return db.Close()
 }
 //#################################################################       SAVING USERS ON DATA BASE :
 func SaveTeacher(user user.User) {
@@ -52,8 +52,8 @@ func LoadUsersFromDb(teachers map[string]user.User, students map[string]user.Use
 	rows, err2 := db.Query("SELECT * FROM Goxam.teachers")
 	errHandler(err2)
 	putUsers(rows, teachers, 1)
-	rows2, err2 := db.Query("SELECT * FROM Goxam.students")
-	errHandler(err2)
+	rows2, err3 := db.Query("SELECT * FROM Goxam.students")
+	errHandler(err3)
 	putUsers(rows2, students, 2)
 }
 func putUsers(rows *sql.Rows, users map[string]user.User, typee int) {
