@@ -4,11 +4,21 @@ import (
 	"fmt"
 	"github.com/hawwwdi/Goxam/internal/db/dbHandler"
 	"github.com/hawwwdi/Goxam/internal/models/class"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type Student struct {
 	UserName, Email string
 	PassWord        []byte
+}
+// function to create encrypted password
+func (std *Student) SetEncryptPassWord(pass []byte) {
+	bs, err := bcrypt.GenerateFromPassword(pass, bcrypt.MinCost)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	std.PassWord = bs
 }
 
 func (std *Student) Handle() {
@@ -18,11 +28,11 @@ func (std *Student) Handle() {
 	fmt.Scan(&chosen)
 	switch chosen {
 	case 1:
-		seeTestResult()
+		std.seeTestResult()
 	case 2:
-		loginToClass()
+		std.loginToClass()
 	case 3:
-		signUpToClass()
+		std.signUpToClass()
 	default:
 		fmt.Println("unsupported input !")
 		std.Handle()
@@ -45,7 +55,7 @@ func (std *Student) seeTestResult() {
 	//after choosing one we will sho the result of that
 }
 func (std *Student) loginToClass() {
-	classesId := dbHandler.GetStudentsClasses(user)
+	classesId := dbHandler.GetStudentsClasses(std)
 	for _, id := range classesId {
 		fmt.Println(" = " + id)
 	}
@@ -57,6 +67,6 @@ func (std *Student) loginToClass() {
 		class.StudentClass{Id: id, User: user}.Handle()
 	} else {
 		fmt.Println("unknown id")
-		loginToClass(user)
+		std.loginToClass()
 	}
 }

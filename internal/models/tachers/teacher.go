@@ -5,6 +5,7 @@ import (
 	"github.com/hawwwdi/Goxam/internal/db/dbHandler"
 	"github.com/hawwwdi/Goxam/internal/models/class"
 	"github.com/hawwwdi/Goxam/internal/models/user"
+	"golang.org/x/crypto/bcrypt"
 )
 
 
@@ -13,7 +14,15 @@ type Teacher struct {
 	UserName, Email string
 	PassWord        []byte
 }
-
+// function to create encrypted password
+func (teacher *Teacher) SetEncryptPassWord(pass []byte) {
+	bs, err := bcrypt.GenerateFromPassword(pass, bcrypt.MinCost)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	teacher.PassWord = bs
+}
 
 func Handle(user user.User) {
 	fmt.Println("HELLO Mr." + user.UserName + " welcome to your portal .")
