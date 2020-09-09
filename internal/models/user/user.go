@@ -5,10 +5,8 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-type User struct {
-	UserName, Email string
-	PassWord        []byte
-	Type            int //1 teacher , 2 student
+type User interface {
+	
 }
 // function to create encrypted password
 func (user *User) SetEncryptPassWord(pass []byte) {

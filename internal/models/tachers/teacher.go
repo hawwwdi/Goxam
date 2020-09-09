@@ -7,6 +7,14 @@ import (
 	"github.com/hawwwdi/Goxam/internal/models/user"
 )
 
+
+
+type Teacher struct {
+	UserName, Email string
+	PassWord        []byte
+}
+
+
 func Handle(user user.User) {
 	fmt.Println("HELLO Mr." + user.UserName + " welcome to your portal .")
 	fmt.Println("1 ) login to class \n2 ) create a new class")
