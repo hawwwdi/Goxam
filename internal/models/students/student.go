@@ -47,7 +47,7 @@ func (std *Student) signUpToClass() {
 	} else {
 		fmt.Println(massage)
 	}
-	Handle(user)
+	std.Handle()
 }
 func (std *Student) seeTestResult() {
 	//TODO

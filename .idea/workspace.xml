@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b30e9dd6-16f4-42c7-8d1f-eca2c9bb3637" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/internal/models/students/student.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/students/student.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/models/tachers/teacher.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/tachers/teacher.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/models/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/models/user/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
