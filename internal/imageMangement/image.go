@@ -26,6 +26,14 @@ func NewImage(img *os.File, pathParts ...string) (*Image, error) {
 	return i, nil
 }
 
+func (i *Image) Id() int64 {
+	return i.id
+}
+
+func (i *Image) Path() string {
+	return i.path
+}
+
 func saveImg(file *os.File, imgPath string) error {
 	bytes, err := ioutil.ReadAll(file)
 	if err != nil {
