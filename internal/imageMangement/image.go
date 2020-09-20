@@ -2,12 +2,20 @@ package imageMangement
 
 import (
 	"io/ioutil"
+	"log"
 	"os"
 	"path"
 	"time"
 )
 
 const savePath = "../images/"
+
+func init() {
+	if err := os.Mkdir(savePath, os.ModeDir); err != nil {
+		log.Printf("create directory %v: FALSE", savePath )
+	}
+	//todo check fileMode
+}
 
 type Image struct {
 	id   int64
