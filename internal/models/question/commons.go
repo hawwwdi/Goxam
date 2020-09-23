@@ -1,5 +1,7 @@
 package question
 
+import "github.com/hawwwdi/Goxam/internal/imageMangement"
+
 type Kind int
 // QTest for test type
 // QSAns for short answer question
@@ -19,10 +21,10 @@ type Question interface {
 // Dsc is alias for Description
 type Dsc struct {
 	Text    string
-	Picture string
+	Picture imageMangement.Image
 }
 
-func NewDescription(txt , img string) Dsc {
+func NewDescription(txt string , img imageMangement.Image) Dsc {
 	d := new(Dsc)
 	d.Text = txt
 	d.Picture = img
