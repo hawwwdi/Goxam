@@ -32,11 +32,6 @@ func NewShortAnswerOpt(ans string) ShortAnswerOpt {
 	return *s
 }
 
-func (o *ShortAnswerOpt) JSon() string {
-	//todo
-	return "this is json"
-}
-
 func (o *ShortAnswerOpt) String() string {
 	//todo
 	return "this is String"

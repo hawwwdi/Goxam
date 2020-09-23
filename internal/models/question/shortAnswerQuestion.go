@@ -36,11 +36,6 @@ func (a *ShortAnswer) GetId() string{
 	return a.id
 }
 
-func (a *ShortAnswer) JSon() string {
-	//todo
-	return "this is form"
-}
-
 func (a *ShortAnswer) String() string {
 	//todo
 	return "this is string"

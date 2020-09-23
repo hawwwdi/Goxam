@@ -40,11 +40,6 @@ func (t *Test) GetId() string{
 	return t.id
 }
 
-func (t *Test) JSon() string {
-	//todo
-	return "this is form"
-}
-
 func (t *Test) String() string {
 	//todo
 	return "this is string"

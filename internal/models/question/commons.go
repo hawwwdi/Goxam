@@ -8,17 +8,12 @@ const (
 	QSAns
 )
 
-type JSoner interface {
-	JSon() string
-}
-
 type Question interface {
 	SetId(string)
 	GetId() string
 	CheckAnswer(...string) bool
 	Save() error
 	String() string
-	JSoner
 }
 
 // Dsc is alias for Description
