@@ -5,6 +5,7 @@ import "github.com/hawwwdi/Goxam/internal/models/exam"
 func SaveExam(exm *exam.Exam, classId string) error {
 	query := `INSERT INTO exams VALUES (?,?,?,?,?,?,?,?);`
 	stmt, err := db.Prepare(query)
+	defer stmt.Close()
 	//errHandler(err)
 	if err != nil {
 		return err
@@ -12,12 +13,12 @@ func SaveExam(exm *exam.Exam, classId string) error {
 	_, err1 := stmt.Exec(
 		classId,
 		exm.Id,
-		exm.DateTime,
 		exm.Time,
+		exm.Duration,
 		exm.Forfeit,
 		exm.Noq,
 		exm.Dsc.Text,
-		exm.Id,
+		exm.Dsc.Picture.Path(),
 	)
 	//todo change the image id
 	//errHandler(err1)

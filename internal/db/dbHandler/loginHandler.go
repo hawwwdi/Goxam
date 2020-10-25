@@ -14,7 +14,7 @@ func init() {
 }
 func setDb() *sql.DB {
 	db, err := sql.Open("mysql",
-		"root:armin3011@tcp(127.0.0.1:3306)/Goxam")
+		"hadi:123%Ha%123@tcp(127.0.0.1:3306)/Goxam")
 	errHandler(err)
 	err = db.Ping()
 	errHandler(err)

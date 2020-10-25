@@ -18,14 +18,14 @@ func init() {
 }
 
 type Image struct {
-	//id   int64
+	id   int64
 	path string
 }
 
 // pass teacher, exam, question/student name + fileName as pathParts
 func NewImage(img *os.File, pathParts ...string) (*Image, error) {
 	i := new(Image)
-	//i.id = currTime()
+	i.id = currTime()
 	i.path = path.Join(pathParts...)
 	err := saveImg(img, i.path)
 	if err != nil {
@@ -34,9 +34,9 @@ func NewImage(img *os.File, pathParts ...string) (*Image, error) {
 	return i, nil
 }
 
-/*func (i *Image) Id() int64 {
+func (i *Image) Id() int64 {
 	return i.id
-}*/
+}
 
 func (i *Image) Path() string {
 	return i.path

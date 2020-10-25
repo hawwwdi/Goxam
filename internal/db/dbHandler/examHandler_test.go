@@ -13,4 +13,6 @@ func TestSaveExam(t *testing.T) {
 	if err := SaveExam(&exm, "test"); err != nil {
 		t.Error(err)
 	}
+	err := CloseDB()
+	errHandler(err)
 }
